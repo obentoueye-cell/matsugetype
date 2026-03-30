@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>まつ毛水分タイプ診断 | iu.</title>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-<style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <title>まつ毛水分タイプ診断 | iu. × OBENTOUeye</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet"/>
+  <style>
   :root {
     --cream: #FDF7F4;
     --rose: #D4848E;
@@ -89,13 +89,24 @@
     background: linear-gradient(135deg, var(--rose), #C06070);
     color: var(--white);
     border: none; border-radius: 50px;
-    padding: 18px 52px; font-size: 17px;
+    padding: 20px 48px; font-size: 17px;
     font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;
-    cursor: pointer; box-shadow: 0 6px 24px rgba(212,132,142,0.45);
+    cursor: pointer;
+    box-shadow: 0 8px 28px rgba(212,132,142,0.5), 0 2px 8px rgba(212,132,142,0.3);
     transition: all 0.25s ease;
     letter-spacing: 1px;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    overflow: hidden;
   }
-  .btn-start:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(212,132,142,0.55); }
+  .btn-start::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+    border-radius: 50px;
+  }
+  .btn-start:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(212,132,142,0.6); }
   .btn-start:active { transform: translateY(0); }
   .start-note {
     margin-top: 20px; font-size: 12px; color: var(--text-muted); text-align: center;
@@ -135,6 +146,7 @@
   .question-card {
     background: var(--white); border-radius: var(--radius);
     padding: 36px 28px; box-shadow: var(--shadow);
+    border: 1.5px solid var(--rose-light);
     width: 100%; max-width: 480px;
     animation: slideUp 0.35s ease;
   }
@@ -150,34 +162,49 @@
   }
   .options-list { display: flex; flex-direction: column; gap: 12px; }
   .option-btn {
-    background: var(--cream); border: 2px solid transparent;
-    border-radius: var(--radius-sm); padding: 16px 20px;
-    font-size: 15px; font-family: 'Noto Sans JP', sans-serif;
-    color: var(--text); text-align: left; cursor: pointer;
-    transition: all 0.2s ease; line-height: 1.5;
-    display: flex; align-items: center; gap: 12px;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background: var(--cream) !important;
+    border: 2px solid #E8D8D0 !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 16px 20px !important;
+    font-size: 15px !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
+    color: var(--text) !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    line-height: 1.5 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .option-btn:hover {
-    background: var(--rose-light);
-    border-color: var(--rose);
-    transform: translateX(4px);
+    background: var(--rose-light) !important;
+    border-color: var(--rose) !important;
   }
-  .option-btn:active { transform: scale(0.98); }
+  .option-btn:active { transform: scale(0.98) !important; }
   .option-btn.selected {
-    background: var(--rose-light);
-    border-color: var(--rose);
-    color: var(--navy); font-weight: 500;
+    background: var(--rose-light) !important;
+    border-color: var(--rose) !important;
+    color: var(--navy) !important;
+    font-weight: 500 !important;
   }
   .option-letter {
     width: 28px; height: 28px; border-radius: 50%;
-    background: var(--rose-light); color: var(--rose);
+    background: white; color: var(--rose);
     font-size: 12px; font-weight: 700;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; transition: all 0.2s;
+    border: 1.5px solid var(--rose-light);
   }
   .option-btn:hover .option-letter,
   .option-btn.selected .option-letter {
-    background: var(--rose); color: white;
+    background: var(--rose) !important;
+    color: white !important;
+    border-color: var(--rose) !important;
   }
   .quiz-footer {
     width: 100%; max-width: 480px; margin-top: 20px;
@@ -207,8 +234,9 @@
     margin-bottom: 8px;
   }
   .result-card {
-    background: var(--white); border-radius: var(--radius);
+    background: #ffffff !important; border-radius: var(--radius);
     padding: 40px 28px 36px; box-shadow: var(--shadow);
+    border: 1.5px solid var(--rose-light);
     width: 100%; max-width: 480px;
     text-align: center;
     animation: bounceIn 0.6s cubic-bezier(0.34,1.56,0.64,1);
@@ -310,26 +338,33 @@
     border-radius: var(--radius-sm); padding: 20px 22px;
     display: flex; align-items: center; gap: 16px;
     cursor: pointer; transition: all 0.22s ease;
-    text-decoration: none; color: inherit;
+    text-decoration: none !important;
+    color: inherit;
     box-shadow: var(--shadow-sm);
     position: relative; overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
   }
   .cta-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
   .cta-card:active { transform: scale(0.98); }
 
   .cta-card--pro {
-    background: linear-gradient(135deg, var(--navy) 0%, #2B5FA8 100%);
-    color: white;
+    background: linear-gradient(135deg, #1E3D6B 0%, #2B5FA8 100%) !important;
+    color: white !important;
   }
   .cta-card--booking {
-    background: linear-gradient(135deg, var(--rose) 0%, #C06070 100%);
-    color: white;
+    background: linear-gradient(135deg, #D4848E 0%, #C06070 100%) !important;
+    color: white !important;
   }
   .cta-card--insta {
-    background: var(--white);
-    border: 2px solid var(--rose-light);
-    color: var(--text);
+    background: var(--white) !important;
+    border: 2px solid var(--rose-light) !important;
+    color: var(--text) !important;
   }
+  .cta-card--pro *, .cta-card--booking * { color: white !important; }
+  .cta-card--insta .cta-card__name { color: var(--navy) !important; }
+  .cta-card--insta .cta-card__tag { color: var(--text-muted) !important; }
+  .cta-card--insta .cta-card__desc { color: var(--text-muted) !important; }
+  .cta-card--insta .cta-card__arrow { color: var(--rose) !important; }
 
   .cta-card__icon {
     width: 48px; height: 48px; border-radius: 14px;
@@ -373,22 +408,42 @@
   }
   .share-row { display: flex; gap: 8px; }
   .btn-share {
-    flex: 1; border: none; border-radius: var(--radius-sm);
-    padding: 13px 4px; font-size: 11px; font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 700; cursor: pointer; transition: all 0.2s;
-    display: flex; align-items: center; justify-content: center; gap: 4px;
-    color: white;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    flex: 1; border: none !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 13px 4px !important;
+    font-size: 11px !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    color: white !important;
   }
   .btn-share--x { background: #000000 !important; }
   .btn-share--threads { background: #101010 !important; }
   .btn-share--insta {
-    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
   }
   .btn-retry {
-    flex: 0 0 48px; border: none; border-radius: var(--radius-sm);
-    padding: 13px 4px; font-size: 16px; cursor: pointer; transition: all 0.2s;
-    background: var(--white); box-shadow: var(--shadow-sm);
-    display: flex; align-items: center; justify-content: center;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    flex: 0 0 48px !important;
+    border: none !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 13px 4px !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+    background: var(--white) !important;
+    box-shadow: var(--shadow-sm) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   /* ===== RESPONSIVE ===== */
@@ -399,32 +454,30 @@
 </style>
 </head>
 <body>
-<div class="bg-dots"></div>
 
-<!-- ===== START SCREEN ===== -->
 <div id="start-screen">
-  <div class="logo-tag">iu. × まつ毛水分研究</div>
-  <h1 class="start-title">あなたの<span>まつ毛</span>は<br>何タイプ？</h1>
-  <p class="start-sub">15の質問で、あなたのまつ毛状態と<br>ホームケアの優先順位がわかる✨<br>診断所要時間：約2〜3分</p>
+  <div class="logo-tag">iu. × まつ毛水分研究 | OBENTOUeye</div>
+  <h1 class="start-title">まつ毛<span>12タイプ</span>診断</h1>
+  <p class="start-sub" style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px">あなたに合ったまつ毛ケア、わかるかも？</p>
+  <p class="start-sub">バラつく・細くなった・持ちが安定しない…<br>体の内側・外側から原因を診断✨<br>17問 約2〜3分</p>
   <div class="animal-grid" id="start-animal-grid"></div>
-  <button class="btn-start" onclick="startQuiz()">診断スタート →</button>
+  <button class="btn-start" onclick="startQuiz()">あなたのタイプを診断する →</button>
   <p class="start-note">※医療診断ではありません。気になる症状は眼科へ。</p>
 </div>
 
-<!-- ===== QUIZ SCREEN ===== -->
 <div id="quiz-screen" class="hidden">
   <div class="quiz-header">
-    <div class="progress-info">
+    <div class="progress-header">
       <span class="progress-label">QUESTION</span>
-      <span class="progress-count" id="progress-count">1 / 12</span>
+      <span class="progress-count" id="progress-count">1 / 17</span>
     </div>
     <div class="progress-bar">
-      <div class="progress-fill" id="progress-fill" style="width:6.67%"></div>
+      <div class="progress-fill" id="progress-fill" style="width:5.88%"></div>
     </div>
   </div>
   <div class="question-card" id="question-card">
-    <span class="q-emoji" id="q-emoji">💧</span>
-    <div class="q-text" id="q-text">質問テキスト</div>
+    <span class="q-emoji" id="q-emoji"></span>
+    <div class="q-text" id="q-text"></div>
     <div class="options-list" id="options-list"></div>
   </div>
   <div class="quiz-footer">
@@ -432,63 +485,66 @@
   </div>
 </div>
 
-<!-- ===== RESULT SCREEN ===== -->
 <div id="result-screen" class="hidden">
-  <div class="result-header">
-    <div class="result-label">DIAGNOSIS RESULT</div>
-  </div>
+  <div class="result-header"><div class="result-label">DIAGNOSIS RESULT</div></div>
   <div class="result-card" id="result-card">
     <div class="result-animal-wrap" id="result-animal"></div>
-    <div class="result-type-tag" id="result-tag">タグ</div>
-    <div class="result-type-name" id="result-name">タイプ名</div>
-    <div class="result-message" id="result-msg">メッセージ</div>
+    <div class="result-type-tag" id="result-tag"></div>
+    <div class="result-type-name" id="result-name"></div>
+    <div class="result-message" id="result-msg"></div>
     <div id="skin-badge-wrap" style="display:none;margin-top:16px;text-align:center;"></div>
   </div>
   <div class="result-divider"></div>
+  <div id="today-action-wrap" style="width:100%;max-width:480px;animation:slideUp 0.4s ease 0.2s both;"></div>
+  <div class="result-divider"></div>
   <div class="detail-card">
-    <div class="detail-title">あなたのまつ毛状態</div>
-    <div class="detail-text" id="detail-text">詳細</div>
-    <div class="detail-title">優先ケアの順番</div>
+    <div class="detail-title">今のまつ毛の状態</div>
+    <div class="detail-text" id="detail-text"></div>
+    <div class="detail-title" style="margin-top:16px">今日からやること</div>
     <ul class="priority-list" id="priority-list"></ul>
-    <div style="height:20px"></div>
-    <div class="detail-title">💡 おすすめのケアアイテム</div>
-    <div id="care-list" style="display:flex;flex-direction:column;gap:8px;margin-top:4px;"></div>
+    <button id="care-toggle" onclick="toggleCare()" style="-webkit-appearance:none;appearance:none;width:100%;margin-top:18px;padding:12px;background:var(--cream);border:1.5px solid var(--rose-light);border-radius:10px;font-size:13px;font-weight:700;color:var(--rose);cursor:pointer;text-align:center;">
+      💡 おすすめケアアイテムを見る ›
+    </button>
+    <div id="care-list" style="display:none;flex-direction:column;gap:8px;margin-top:12px;"></div>
   </div>
   <div class="result-divider"></div>
   <div id="temp-advice-wrap" style="display:none;width:100%;max-width:480px;animation:slideUp 0.4s ease 0.4s both;"></div>
+  <div id="pre-visit-wrap" style="display:none;width:100%;max-width:480px;"></div>
+  <div class="result-divider"></div>
+  <div style="width:100%;max-width:480px;text-align:center;padding:4px 0 8px;">
+    <p style="font-size:13px;color:var(--text-muted);line-height:1.8">
+      まつ毛は<strong style="color:var(--navy)">水分状態</strong>で<br>つき方・モチ・仕上がりが全部変わります。
+    </p>
+  </div>
   <div class="result-divider"></div>
   <div id="cta-text" class="hidden"></div>
-
   <div class="cta-section">
-    <div class="cta-section-title">NEXT STEP</div>
+    <div class="cta-section-title">もっと詳しく知りたい方はこちら</div>
     <div class="cta-cards-wrap">
-      <!-- PRO: アイリスト -->
       <a href="https://lin.ee/s3elDvQ" target="_blank" class="cta-card cta-card--pro">
         <div class="cta-card__icon">💼</div>
         <div class="cta-card__body">
-          <span class="cta-card__tag">FOR LASH ARTISTS</span>
+          <span class="cta-card__tag">FOR LASH ARTISTS · LINE</span>
           <span class="cta-card__name">うるアゲ研究室</span>
-          <span class="cta-card__desc">診断の根拠・改善法を全部まとめてる<br>アイリスト向け研究室はこちら</span>
+          <span class="cta-card__desc">タイプ別の詳しいケア理論・根拠を学べる<br>アイリスト向け研究室はこちら</span>
         </div>
         <span class="cta-card__arrow">›</span>
       </a>
-      <!-- BOOKING: お客様 -->
       <a href="https://lin.ee/s3elDvQ" target="_blank" class="cta-card cta-card--booking">
         <div class="cta-card__icon">👁️</div>
         <div class="cta-card__body">
-          <span class="cta-card__tag">SALON RESERVATION · KYOTO</span>
-          <span class="cta-card__name">iu. 京都でまつげ予約</span>
-          <span class="cta-card__desc">今すぐ改善したい・目元を変えたい方<br>→ LINEからご予約はこちら</span>
+          <span class="cta-card__tag">SALON · KYOTO · LINE</span>
+          <span class="cta-card__name">iu. 京都でまつ毛ケア</span>
+          <span class="cta-card__desc">あなたのタイプに合った施術・ケアを相談したい方<br>→ LINEからどうぞ</span>
         </div>
         <span class="cta-card__arrow">›</span>
       </a>
-      <!-- INSTA: ライト層 -->
       <a href="https://www.instagram.com/iu.ikuho_eye?igsh=N2prM2Nxb3Ywb3R3&utm_source=qr" target="_blank" class="cta-card cta-card--insta">
         <div class="cta-card__icon">📸</div>
         <div class="cta-card__body">
-          <span class="cta-card__tag">FOLLOW US</span>
-          <span class="cta-card__name">@iu.ikuho_eye をフォロー</span>
-          <span class="cta-card__desc">まだ様子見の方もOK。情報を受け取りながら<br>自分のペースで学べます</span>
+          <span class="cta-card__tag">INSTAGRAM · @iu.ikuho_eye</span>
+          <span class="cta-card__name">まつ毛水分理論を発信中</span>
+          <span class="cta-card__desc">日々の水分ケア・まつ毛の話を投稿してます<br>フォローして情報を受け取ってね</span>
         </div>
         <span class="cta-card__arrow">›</span>
       </a>
@@ -530,7 +586,7 @@ const questions = [
       { text: "ほぼ飲まない", scores: { H:3 } },
       { text: "コップ2〜3杯くらい", scores: { H:2 } },
       { text: "1Lくらい", scores: { H:1 } },
-      { text: "1.5L以上しっかり飲んでる", scores: {} }
+      { text: "1.5L以上しっかり飲んでる", scores: {}, flag: { water_enough: true } }
     ]
   },
   {
@@ -673,558 +729,284 @@ const questions = [
       { text: "ちゃんとケアしてから寝る", scores: {} },
       { text: "サウナ・長風呂・運動はしない", scores: {} }
     ]
+  },
+  {
+    emoji: "🪠",
+    text: "腸の調子はどう？",
+    hint: "腸の水分吸収はまつ毛の状態に直結するよ",
+    options: [
+      { text: "便秘がち・お腹が張りやすい", scores: { H:2 }, flag: { gut:'bad' } },
+      { text: "バラバラ・安定しない", scores: { H:1 }, flag: { gut:'unstable' } },
+      { text: "快便・問題ない", scores: {} },
+      { text: "わからない", scores: {} }
+    ]
+  },
+  {
+    emoji: "💊",
+    text: "常時飲んでいるお薬はある？",
+    hint: "薬の副作用で体内の水分バランスが変わることがあるよ",
+    options: [
+      { text: "毎日飲んでいる薬がある", scores: { H:1, R:1 }, flag: { meds:true } },
+      { text: "たまに飲む程度", scores: {} },
+      { text: "ない", scores: {} }
+    ]
   }
 ];
 
 // ===== SVGS =====
 const SVGs = {
 
-  /* ハリネズミ：針が背中にいっぱい、小さい丸顔 */
   hedgehog: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="58" cy="114" rx="24" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 針の背中 -->
-    <ellipse cx="62" cy="68" rx="36" ry="26" fill="#7A4F2A"/>
-    <!-- 針 -->
-    <line x1="36" y1="60" x2="28" y2="42" stroke="#4A2E10" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="44" y1="52" x2="38" y2="32" stroke="#4A2E10" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="54" y1="47" x2="52" y2="26" stroke="#4A2E10" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="64" y1="44" x2="64" y2="23" stroke="#4A2E10" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="74" y1="47" x2="76" y2="26" stroke="#4A2E10" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="84" y1="53" x2="88" y2="34" stroke="#4A2E10" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="92" y1="62" x2="98" y2="46" stroke="#4A2E10" stroke-width="2.5" stroke-linecap="round"/>
-    <!-- 針先の水滴 -->
-    <circle cx="27" cy="40" r="3" fill="#88CCE8" opacity="0.9"/>
-    <circle cx="37" cy="30" r="2.5" fill="#88CCE8" opacity="0.8"/>
-    <circle cx="51" cy="24" r="3" fill="#88CCE8" opacity="0.9"/>
-    <circle cx="64" cy="21" r="3" fill="#88CCE8" opacity="0.9"/>
-    <circle cx="77" cy="24" r="2.5" fill="#88CCE8" opacity="0.8"/>
-    <circle cx="89" cy="32" r="3" fill="#88CCE8" opacity="0.9"/>
-    <circle cx="99" cy="44" r="2.5" fill="#88CCE8" opacity="0.8"/>
-    <!-- 顔（小さめ） -->
-    <circle cx="42" cy="82" r="22" fill="#EDCA96"/>
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 水滴キラキラ -->
+    <circle cx="22" cy="22" r="5" fill="#88CCF0" opacity="0.85"/>
+    <circle cx="30" cy="13" r="3.5" fill="#AAD8F0" opacity="0.7"/>
+    <circle cx="96" cy="18" r="4.5" fill="#88CCF0" opacity="0.8"/>
+    <circle cx="104" cy="28" r="3" fill="#AAD8F0" opacity="0.65"/>
+    <!-- 絵文字 -->
+    <text x="60" y="74" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🦔</text>
     <!-- ほっぺ -->
-    <circle cx="30" cy="86" r="6" fill="#FFB0B0" opacity="0.55"/>
-    <circle cx="52" cy="86" r="6" fill="#FFB0B0" opacity="0.55"/>
-    <!-- 目 -->
-    <circle cx="33" cy="80" r="6" fill="#1A0E04"/>
-    <circle cx="50" cy="80" r="6" fill="#1A0E04"/>
-    <circle cx="35" cy="78" r="2.5" fill="white"/>
-    <circle cx="52" cy="78" r="2.5" fill="white"/>
-    <circle cx="36" cy="77.5" r="1" fill="white" opacity="0.7"/>
-    <circle cx="53" cy="77.5" r="1" fill="white" opacity="0.7"/>
-    <!-- 鼻 とがった -->
-    <ellipse cx="41" cy="90" rx="5" ry="3.5" fill="#C06848"/>
-    <!-- 口 -->
-    <path d="M37 93 Q41 97 45 93" stroke="#C06848" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <!-- ミニ加湿器 -->
-    <rect x="66" y="82" width="16" height="22" rx="5" fill="#A8DCF0"/>
-    <rect x="68" y="77" width="12" height="8" rx="4" fill="#78C0E0"/>
-    <path d="M71 74 Q74 68 77 74" stroke="#A8DCF0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <path d="M69 71 Q72 64 75 71" stroke="#A8DCF0" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.6"/>
-    <path d="M73 70 Q76 63 79 70" stroke="#A8DCF0" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <circle cx="34" cy="84" r="8" fill="#FFB8B8" opacity="0.55"/>
+    <circle cx="86" cy="84" r="8" fill="#FFB8B8" opacity="0.55"/>
+    <!-- 加湿器ミニ -->
+    <rect x="86" y="90" width="14" height="18" rx="5" fill="#88CCEA" opacity="0.9"/>
+    <rect x="88" y="86" width="10" height="6" rx="3" fill="#60B8D8" opacity="0.9"/>
+    <path d="M91 83 Q93 77 95 83" stroke="#88CCEA" stroke-width="2.5" fill="none" stroke-linecap="round"/>
   </svg>`,
 
-  /* フクロウ：丸顔ディスク＋大きい瞳孔＋眉タフト */
   owl: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 体 -->
-    <ellipse cx="60" cy="90" rx="26" ry="27" fill="#C8954A"/>
-    <!-- 羽模様 -->
-    <ellipse cx="44" cy="92" rx="12" ry="16" fill="#A87030" opacity="0.5"/>
-    <ellipse cx="76" cy="92" rx="12" ry="16" fill="#A87030" opacity="0.5"/>
-    <!-- 胸の白 -->
-    <ellipse cx="60" cy="95" rx="14" ry="18" fill="#F0DCA0"/>
-    <!-- 眉タフト（耳みたいなやつ） -->
-    <ellipse cx="46" cy="46" rx="8" ry="13" fill="#8A6020" transform="rotate(-15 46 46)"/>
-    <ellipse cx="74" cy="46" rx="8" ry="13" fill="#8A6020" transform="rotate(15 74 46)"/>
-    <!-- 顔ディスク -->
-    <circle cx="60" cy="68" r="30" fill="#E0B060"/>
-    <ellipse cx="60" cy="70" rx="26" ry="24" fill="#F5E8C8"/>
-    <!-- 目の外枠 -->
-    <circle cx="46" cy="68" r="15" fill="#C8903A"/>
-    <circle cx="74" cy="68" r="15" fill="#C8903A"/>
-    <!-- 目 白目 -->
-    <circle cx="46" cy="68" r="12" fill="#FFF8E8"/>
-    <circle cx="74" cy="68" r="12" fill="#FFF8E8"/>
-    <!-- 虹彩 -->
-    <circle cx="46" cy="68" r="9" fill="#E8A020"/>
-    <circle cx="74" cy="68" r="9" fill="#E8A020"/>
-    <!-- 瞳 -->
-    <circle cx="46" cy="68" r="6" fill="#100800"/>
-    <circle cx="74" cy="68" r="6" fill="#100800"/>
-    <!-- キラキラ -->
-    <circle cx="48" cy="65.5" r="2.8" fill="white"/>
-    <circle cx="76" cy="65.5" r="2.8" fill="white"/>
-    <circle cx="49.5" cy="64.5" r="1.1" fill="white" opacity="0.75"/>
-    <circle cx="77.5" cy="64.5" r="1.1" fill="white" opacity="0.75"/>
-    <!-- くちばし -->
-    <path d="M54 79 L60 86 L66 79 Z" fill="#E09010"/>
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 絵文字 -->
+    <text x="60" y="74" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🦉</text>
     <!-- ほっぺ -->
-    <circle cx="34" cy="73" r="5" fill="#FFB0B0" opacity="0.4"/>
-    <circle cx="86" cy="73" r="5" fill="#FFB0B0" opacity="0.4"/>
+    <circle cx="30" cy="82" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <circle cx="90" cy="82" r="8" fill="#FFB8B8" opacity="0.5"/>
     <!-- スマホ -->
-    <rect x="73" y="88" width="22" height="30" rx="5" fill="#1A1A2E"/>
-    <rect x="75" y="91" width="18" height="22" rx="3" fill="#4060FF" opacity="0.85"/>
-    <rect x="77" y="93" width="6" height="4" rx="1" fill="white" opacity="0.65"/>
-    <rect x="85" y="93" width="6" height="4" rx="1" fill="white" opacity="0.45"/>
-    <rect x="77" y="99" width="14" height="2" rx="1" fill="white" opacity="0.35"/>
-    <rect x="77" y="103" width="10" height="2" rx="1" fill="white" opacity="0.25"/>
+    <rect x="78" y="88" width="22" height="30" rx="5" fill="#1A1A2A"/>
+    <rect x="80" y="91" width="18" height="22" rx="3" fill="#4070FF" opacity="0.92"/>
+    <rect x="82" y="93" width="7" height="4" rx="1" fill="white" opacity="0.75"/>
+    <rect x="91" y="93" width="5" height="4" rx="1" fill="white" opacity="0.5"/>
+    <rect x="82" y="99" width="14" height="2" rx="1" fill="white" opacity="0.4"/>
+    <rect x="82" y="103" width="10" height="2" rx="1" fill="white" opacity="0.3"/>
   </svg>`,
 
-  /* キツネ：とがった耳と口吻 */
   fox: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- しっぽ（ふさふさ） -->
-    <ellipse cx="90" cy="96" rx="20" ry="14" fill="#E8803A" transform="rotate(30 90 96)"/>
-    <ellipse cx="92" cy="98" rx="13" ry="9" fill="#FFF0E0" transform="rotate(30 92 98)"/>
-    <!-- 体 -->
-    <ellipse cx="60" cy="90" rx="26" ry="26" fill="#F09040"/>
-    <!-- 腹白 -->
-    <ellipse cx="60" cy="93" rx="15" ry="18" fill="#FFF0E0"/>
-    <!-- 耳（三角形） -->
-    <polygon points="36,62 26,20 52,48" fill="#E8803A"/>
-    <polygon points="84,62 94,20 68,48" fill="#E8803A"/>
-    <polygon points="38,60 30,28 50,46" fill="#FFDDC0"/>
-    <polygon points="82,60 90,28 70,46" fill="#FFDDC0"/>
-    <!-- 頭 -->
-    <circle cx="60" cy="70" r="28" fill="#F09040"/>
-    <!-- 口吻（ちょっと突き出た） -->
-    <ellipse cx="60" cy="82" rx="16" ry="13" fill="#FFF0E0"/>
-    <!-- ほっぺ -->
-    <circle cx="42" cy="74" r="6.5" fill="#FFB0B0" opacity="0.5"/>
-    <circle cx="78" cy="74" r="6.5" fill="#FFB0B0" opacity="0.5"/>
-    <!-- 目 -->
-    <circle cx="50" cy="67" r="8" fill="#180E04"/>
-    <circle cx="70" cy="67" r="8" fill="#180E04"/>
-    <circle cx="52.5" cy="64.5" r="3.2" fill="white"/>
-    <circle cx="72.5" cy="64.5" r="3.2" fill="white"/>
-    <circle cx="54" cy="63.5" r="1.2" fill="white" opacity="0.7"/>
-    <circle cx="74" cy="63.5" r="1.2" fill="white" opacity="0.7"/>
-    <!-- 鼻（黒くてちょっと大きめ） -->
-    <ellipse cx="60" cy="79" rx="5.5" ry="4" fill="#180E04"/>
-    <!-- 口 -->
-    <path d="M55 83 Q60 88 65 83" stroke="#C06040" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- ひげ -->
-    <line x1="38" y1="78" x2="52" y2="79" stroke="#C06040" stroke-width="1.2" opacity="0.4"/>
-    <line x1="38" y1="82" x2="52" y2="81" stroke="#C06040" stroke-width="1.2" opacity="0.4"/>
-    <line x1="82" y1="78" x2="68" y2="79" stroke="#C06040" stroke-width="1.2" opacity="0.4"/>
-    <line x1="82" y1="82" x2="68" y2="81" stroke="#C06040" stroke-width="1.2" opacity="0.4"/>
-    <!-- レンズケース -->
-    <rect x="18" y="88" width="20" height="16" rx="8" fill="#70C0E0"/>
-    <line x1="18" y1="96" x2="38" y2="96" stroke="white" stroke-width="1.8" opacity="0.7"/>
-    <circle cx="28" cy="92" r="2.5" fill="white" opacity="0.6"/>
-    <circle cx="28" cy="100" r="2.5" fill="white" opacity="0.6"/>
-  </svg>`,
-
-  /* シカ：立派な角とつぶらな瞳 */
-  deer: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 角（左） -->
-    <path d="M44 54 L40 36 L34 22" stroke="#7A4C20" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M40 36 L30 30" stroke="#7A4C20" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M40 36 L36 26" stroke="#7A4C20" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <!-- 角（右） -->
-    <path d="M76 54 L80 36 L86 22" stroke="#7A4C20" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M80 36 L90 30" stroke="#7A4C20" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <path d="M80 36 L84 26" stroke="#7A4C20" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <!-- 体 -->
-    <ellipse cx="60" cy="92" rx="26" ry="25" fill="#D4A860"/>
-    <!-- 耳 -->
-    <ellipse cx="35" cy="62" rx="11" ry="14" fill="#D4A860" transform="rotate(-20 35 62)"/>
-    <ellipse cx="85" cy="62" rx="11" ry="14" fill="#D4A860" transform="rotate(20 85 62)"/>
-    <ellipse cx="35" cy="62" rx="7" ry="9" fill="#FFCCC8" transform="rotate(-20 35 62)"/>
-    <ellipse cx="85" cy="62" rx="7" ry="9" fill="#FFCCC8" transform="rotate(20 85 62)"/>
-    <!-- 頭 -->
-    <circle cx="60" cy="72" r="28" fill="#E8BE70"/>
-    <!-- 口元 -->
-    <ellipse cx="60" cy="83" rx="16" ry="13" fill="#F8E8C0"/>
-    <!-- ほっぺ -->
-    <circle cx="43" cy="76" r="7" fill="#FFB0B0" opacity="0.5"/>
-    <circle cx="77" cy="76" r="7" fill="#FFB0B0" opacity="0.5"/>
-    <!-- 目（大きくてつぶらに） -->
-    <circle cx="50" cy="69" r="9" fill="#180E04"/>
-    <circle cx="70" cy="69" r="9" fill="#180E04"/>
-    <circle cx="53" cy="66.5" r="3.8" fill="white"/>
-    <circle cx="73" cy="66.5" r="3.8" fill="white"/>
-    <circle cx="54.5" cy="65.5" r="1.5" fill="white" opacity="0.7"/>
-    <circle cx="74.5" cy="65.5" r="1.5" fill="white" opacity="0.7"/>
-    <!-- 鼻 -->
-    <ellipse cx="60" cy="80" rx="5.5" ry="4" fill="#B87848"/>
-    <!-- 口 -->
-    <path d="M56 84 Q60 88 64 84" stroke="#B87848" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- 花粉 -->
-    <circle cx="18" cy="36" r="6.5" fill="#C8E860" opacity="0.85"/>
-    <circle cx="24" cy="26" r="4.5" fill="#C8E860" opacity="0.7"/>
-    <circle cx="14" cy="26" r="5" fill="#FFEE50" opacity="0.75"/>
-    <circle cx="97" cy="40" r="5.5" fill="#C8E860" opacity="0.75"/>
-    <circle cx="104" cy="30" r="4" fill="#FFEE50" opacity="0.65"/>
-    <circle cx="94" cy="26" r="3.5" fill="#C8E860" opacity="0.6"/>
-  </svg>`,
-
-  /* ラッコ：仰向けでぷかぷか、貝を持ってる */
-  otter: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="30" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 体（仰向けに浮いてる） -->
-    <ellipse cx="60" cy="95" rx="38" ry="18" fill="#9A7238"/>
-    <!-- お腹（明るい） -->
-    <ellipse cx="60" cy="97" rx="28" ry="13" fill="#C89860"/>
-    <!-- 手足 -->
-    <ellipse cx="22" cy="94" rx="12" ry="8" fill="#9A7238" transform="rotate(20 22 94)"/>
-    <ellipse cx="98" cy="94" rx="12" ry="8" fill="#9A7238" transform="rotate(-20 98 94)"/>
-    <ellipse cx="42" cy="110" rx="9" ry="5" fill="#9A7238" transform="rotate(10 42 110)"/>
-    <ellipse cx="78" cy="110" rx="9" ry="5" fill="#9A7238" transform="rotate(-10 78 110)"/>
-    <!-- 頭（体より小さく・丸く） -->
-    <circle cx="60" cy="70" r="26" fill="#9A7238"/>
-    <circle cx="60" cy="72" r="22" fill="#C89860"/>
-    <!-- 目周り暗め -->
-    <ellipse cx="48" cy="69" rx="10" ry="8" fill="#7A5228" opacity="0.5"/>
-    <ellipse cx="72" cy="69" rx="10" ry="8" fill="#7A5228" opacity="0.5"/>
-    <!-- ほっぺ -->
-    <circle cx="40" cy="76" r="6.5" fill="#FFB0B0" opacity="0.45"/>
-    <circle cx="80" cy="76" r="6.5" fill="#FFB0B0" opacity="0.45"/>
-    <!-- 目 -->
-    <circle cx="50" cy="68" r="7.5" fill="#180E04"/>
-    <circle cx="70" cy="68" r="7.5" fill="#180E04"/>
-    <circle cx="52.5" cy="65.5" r="3" fill="white"/>
-    <circle cx="72.5" cy="65.5" r="3" fill="white"/>
-    <circle cx="54" cy="64.5" r="1.2" fill="white" opacity="0.7"/>
-    <circle cx="74" cy="64.5" r="1.2" fill="white" opacity="0.7"/>
-    <!-- 鼻（ちょっと丸くて大きめ） -->
-    <ellipse cx="60" cy="77" rx="6" ry="4.5" fill="#5A3010"/>
-    <!-- 口 -->
-    <path d="M56 81 Q60 85 64 81" stroke="#5A3010" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- お腹のオイルキラキラ -->
-    <ellipse cx="52" cy="97" rx="10" ry="5.5" fill="#F8C820" opacity="0.55"/>
-    <ellipse cx="70" cy="99" rx="7" ry="4" fill="#F8C820" opacity="0.4"/>
-    <circle cx="62" cy="95" r="4" fill="#F8C820" opacity="0.6"/>
-  </svg>`,
-
-  /* パンダ：目周り黒・丸耳・ぷっくり体 */
-  panda: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="24" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 体 白 -->
-    <ellipse cx="60" cy="92" rx="30" ry="28" fill="#F2F2EC"/>
-    <!-- 体の黒模様（腕） -->
-    <ellipse cx="32" cy="92" rx="12" ry="20" fill="#282828"/>
-    <ellipse cx="88" cy="92" rx="12" ry="20" fill="#282828"/>
-    <!-- 体の内側 白 -->
-    <ellipse cx="60" cy="93" rx="22" ry="24" fill="#F2F2EC"/>
-    <!-- 耳（大きくて黒） -->
-    <circle cx="36" cy="46" r="17" fill="#282828"/>
-    <circle cx="84" cy="46" r="17" fill="#282828"/>
-    <!-- 頭 -->
-    <circle cx="60" cy="70" r="30" fill="#F8F8F2"/>
-    <!-- 目まわり（黒い楕円） -->
-    <ellipse cx="45" cy="68" rx="15" ry="14" fill="#282828"/>
-    <ellipse cx="75" cy="68" rx="15" ry="14" fill="#282828"/>
-    <!-- 目（白目） -->
-    <circle cx="45" cy="67" r="9" fill="white"/>
-    <circle cx="75" cy="67" r="9" fill="white"/>
-    <!-- 瞳 -->
-    <circle cx="45" cy="67" r="6" fill="#100800"/>
-    <circle cx="75" cy="67" r="6" fill="#100800"/>
-    <!-- キラキラ -->
-    <circle cx="47.5" cy="64.5" r="2.5" fill="white"/>
-    <circle cx="77.5" cy="64.5" r="2.5" fill="white"/>
-    <circle cx="49" cy="63.5" r="1" fill="white" opacity="0.75"/>
-    <circle cx="79" cy="63.5" r="1" fill="white" opacity="0.75"/>
-    <!-- 鼻 -->
-    <ellipse cx="60" cy="80" rx="6" ry="4.5" fill="#282828"/>
-    <!-- 口 -->
-    <path d="M55 84 Q60 89 65 84" stroke="#282828" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-    <!-- ほっぺ -->
-    <circle cx="36" cy="77" r="6" fill="#FFB0B0" opacity="0.5"/>
-    <circle cx="84" cy="77" r="6" fill="#FFB0B0" opacity="0.5"/>
-    <!-- ×マーク -->
-    <circle cx="90" cy="102" r="13" fill="#FF4444" opacity="0.18"/>
-    <line x1="84" y1="96" x2="96" y2="108" stroke="#FF3333" stroke-width="4" stroke-linecap="round"/>
-    <line x1="96" y1="96" x2="84" y2="108" stroke="#FF3333" stroke-width="4" stroke-linecap="round"/>
-  </svg>`,
-
-  /* ビーバー：ひらべったいしっぽ＋でかい前歯 */
-  beaver: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="24" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- ビーバーしっぽ（ひらべったい楕円） -->
-    <ellipse cx="74" cy="108" rx="28" ry="12" fill="#5A3010" transform="rotate(-12 74 108)"/>
-    <ellipse cx="74" cy="109" rx="24" ry="9" fill="#7A4828" transform="rotate(-12 74 109)"/>
-    <!-- しっぽのウロコ模様 -->
-    <path d="M52 106 Q65 102 78 108" stroke="#4A2808" stroke-width="1.2" fill="none" opacity="0.45"/>
-    <path d="M54 110 Q67 106 82 112" stroke="#4A2808" stroke-width="1.2" fill="none" opacity="0.35"/>
-    <!-- 体 -->
-    <ellipse cx="56" cy="90" rx="28" ry="27" fill="#B07838"/>
-    <!-- お腹 -->
-    <ellipse cx="56" cy="92" rx="19" ry="20" fill="#D8A868"/>
-    <!-- 耳（丸くて小さい） -->
-    <circle cx="36" cy="57" r="12" fill="#8A5C28"/>
-    <circle cx="36" cy="57" r="7.5" fill="#FFCCAA"/>
-    <circle cx="82" cy="57" r="12" fill="#8A5C28"/>
-    <circle cx="82" cy="57" r="7.5" fill="#FFCCAA"/>
-    <!-- 頭 -->
-    <circle cx="56" cy="70" r="28" fill="#C49468"/>
-    <!-- 口元 -->
-    <ellipse cx="56" cy="82" rx="17" ry="14" fill="#E8C898"/>
-    <!-- ほっぺ -->
-    <circle cx="38" cy="75" r="6.5" fill="#FFB0B0" opacity="0.45"/>
-    <circle cx="74" cy="75" r="6.5" fill="#FFB0B0" opacity="0.45"/>
-    <!-- 目 -->
-    <circle cx="46" cy="67" r="7.5" fill="#180E04"/>
-    <circle cx="66" cy="67" r="7.5" fill="#180E04"/>
-    <circle cx="48.5" cy="64.5" r="3" fill="white"/>
-    <circle cx="68.5" cy="64.5" r="3" fill="white"/>
-    <circle cx="50" cy="63.5" r="1.2" fill="white" opacity="0.7"/>
-    <circle cx="70" cy="63.5" r="1.2" fill="white" opacity="0.7"/>
-    <!-- 鼻 -->
-    <ellipse cx="56" cy="78" rx="5.5" ry="4" fill="#6A3C18"/>
-    <!-- 前歯（でかい特徴的なやつ） -->
-    <rect x="51" y="82" width="7" height="9" rx="2.5" fill="white"/>
-    <rect x="60" y="82" width="7" height="9" rx="2.5" fill="white"/>
-    <line x1="58.5" y1="82" x2="58.5" y2="91" stroke="#E0C898" stroke-width="1.5"/>
-    <!-- ブラシ（コーティング） -->
-    <rect x="78" y="64" width="10" height="24" rx="4" fill="#C49A38"/>
-    <rect x="76" y="86" width="14" height="10" rx="4" fill="#A87828"/>
-    <ellipse cx="83" cy="96" rx="8" ry="5" fill="#FFD858" opacity="0.9"/>
-  </svg>`,
-
-  /* カピバラ：大きい四角い頭、どっしり体 */
-  capybara: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="26" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 体（どっしり） -->
-    <rect x="22" y="76" width="76" height="38" rx="24" fill="#A88C58"/>
-    <!-- 頭（四角めで大きい　カピバラらしい形） -->
-    <rect x="24" y="44" width="72" height="48" rx="20" fill="#C0A06A"/>
-    <!-- 鼻先（少し突き出た） -->
-    <ellipse cx="60" cy="80" rx="24" ry="14" fill="#D0B07A"/>
-    <!-- サウナ帽 -->
-    <ellipse cx="60" cy="40" rx="34" ry="10" fill="#E03A3A"/>
-    <rect x="26" y="30" width="68" height="14" rx="7" fill="#E03A3A"/>
-    <ellipse cx="60" cy="30" rx="28" ry="20" fill="#E03A3A"/>
-    <ellipse cx="60" cy="25" rx="22" ry="15" fill="#F06060"/>
-    <!-- ボンボン -->
-    <circle cx="60" cy="16" r="9" fill="#FAFAFA"/>
-    <!-- 湯気（サウナ感） -->
-    <path d="M86 42 Q92 30 86 20" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.75"/>
-    <path d="M95 46 Q102 32 96 22" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.55"/>
-    <path d="M104 50 Q110 38 106 28" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.4"/>
-    <!-- 目（高い位置にある） -->
-    <circle cx="46" cy="62" r="7" fill="#180E04"/>
-    <circle cx="74" cy="62" r="7" fill="#180E04"/>
-    <circle cx="48.5" cy="59.5" r="2.8" fill="white"/>
-    <circle cx="76.5" cy="59.5" r="2.8" fill="white"/>
-    <circle cx="50" cy="58.5" r="1.1" fill="white" opacity="0.7"/>
-    <circle cx="78" cy="58.5" r="1.1" fill="white" opacity="0.7"/>
-    <!-- ほっぺ -->
-    <ellipse cx="36" cy="68" rx="8" ry="5.5" fill="#FFB0B0" opacity="0.45"/>
-    <ellipse cx="84" cy="68" rx="8" ry="5.5" fill="#FFB0B0" opacity="0.45"/>
-    <!-- 鼻（大きな鼻孔） -->
-    <ellipse cx="60" cy="76" rx="13" ry="8" fill="#A88050"/>
-    <ellipse cx="54" cy="75" rx="4.5" ry="3.5" fill="#8A6030"/>
-    <ellipse cx="66" cy="75" rx="4.5" ry="3.5" fill="#8A6030"/>
-    <!-- 口 -->
-    <path d="M53 80 Q60 85 67 80" stroke="#8A6030" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-  </svg>`,
-
-  /* コアラ：超でかい耳＋ぼんやり目 */
-  koala: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 耳（めちゃでかい・コアラの命） -->
-    <circle cx="28" cy="54" r="24" fill="#9898A0"/>
-    <circle cx="92" cy="54" r="24" fill="#9898A0"/>
-    <circle cx="28" cy="54" r="17" fill="#C8C8D0"/>
-    <circle cx="92" cy="54" r="17" fill="#C8C8D0"/>
-    <circle cx="28" cy="54" r="11" fill="#B0B0B8"/>
-    <circle cx="92" cy="54" r="11" fill="#B0B0B8"/>
-    <!-- 体 -->
-    <ellipse cx="60" cy="93" rx="28" ry="26" fill="#B0B0A8"/>
-    <ellipse cx="60" cy="95" rx="20" ry="20" fill="#D0D0C8"/>
-    <!-- 頭 -->
-    <circle cx="60" cy="72" r="30" fill="#B8B8C0"/>
-    <circle cx="60" cy="74" r="25" fill="#CACAC8"/>
-    <!-- 目下クマ（寝不足） -->
-    <ellipse cx="48" cy="73" rx="10" ry="6" fill="#8888A0" opacity="0.38"/>
-    <ellipse cx="72" cy="73" rx="10" ry="6" fill="#8888A0" opacity="0.38"/>
-    <!-- 目（半目・ぼんやり） -->
-    <circle cx="49" cy="70" r="8" fill="#18182A"/>
-    <circle cx="71" cy="70" r="8" fill="#18182A"/>
-    <!-- まぶた（半目にする） -->
-    <ellipse cx="49" cy="67" rx="9" ry="4.5" fill="#CACAC8"/>
-    <ellipse cx="71" cy="67" rx="9" ry="4.5" fill="#CACAC8"/>
-    <!-- キラキラ（少し元気なさげ） -->
-    <circle cx="51" cy="70" r="2.8" fill="white"/>
-    <circle cx="73" cy="70" r="2.8" fill="white"/>
-    <!-- ほっぺ -->
-    <circle cx="38" cy="77" r="6" fill="#FFB0B0" opacity="0.38"/>
-    <circle cx="82" cy="77" r="6" fill="#FFB0B0" opacity="0.38"/>
-    <!-- 鼻（でかくて丸い、コアラらしい） -->
-    <ellipse cx="60" cy="82" rx="11" ry="8" fill="#606068"/>
-    <!-- 口 -->
-    <path d="M54 87 Q60 91 66 87" stroke="#606068" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- Zzz -->
-    <text x="84" y="50" font-size="14" fill="#9090A8" font-family="Arial" font-weight="bold" opacity="0.85">Z</text>
-    <text x="92" y="40" font-size="10" fill="#9090A8" font-family="Arial" font-weight="bold" opacity="0.68">z</text>
-    <text x="98" y="32" font-size="7.5" fill="#9090A8" font-family="Arial" font-weight="bold" opacity="0.5">z</text>
-    <!-- 抱き枕 -->
-    <ellipse cx="26" cy="98" rx="10" ry="18" fill="#C8E0F0" transform="rotate(12 26 98)"/>
-  </svg>`,
-
-  /* シロクマ：真っ白でまあるい、マフラー */
-  polarbear: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="24" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 耳（白っぽい、丸） -->
-    <circle cx="36" cy="50" r="18" fill="#E0E2E4"/>
-    <circle cx="84" cy="50" r="18" fill="#E0E2E4"/>
-    <circle cx="36" cy="50" r="12" fill="#F2F4F6"/>
-    <circle cx="84" cy="50" r="12" fill="#F2F4F6"/>
-    <!-- 体 -->
-    <ellipse cx="60" cy="93" rx="30" ry="28" fill="#ECEEF0"/>
-    <!-- 頭 -->
-    <circle cx="60" cy="70" r="32" fill="#F2F4F6"/>
-    <!-- 口元 -->
-    <ellipse cx="60" cy="82" rx="18" ry="14" fill="#FAFAFA"/>
-    <!-- ほっぺ（うっすら水色） -->
-    <circle cx="40" cy="76" r="7" fill="#AAD4F4" opacity="0.55"/>
-    <circle cx="80" cy="76" r="7" fill="#AAD4F4" opacity="0.55"/>
-    <!-- 目 -->
-    <circle cx="48" cy="68" r="8.5" fill="#182030"/>
-    <circle cx="72" cy="68" r="8.5" fill="#182030"/>
-    <circle cx="50.5" cy="65.5" r="3.5" fill="white"/>
-    <circle cx="74.5" cy="65.5" r="3.5" fill="white"/>
-    <circle cx="52" cy="64.5" r="1.4" fill="white" opacity="0.7"/>
-    <circle cx="76" cy="64.5" r="1.4" fill="white" opacity="0.7"/>
-    <!-- 鼻 -->
-    <ellipse cx="60" cy="79" rx="6" ry="4.5" fill="#788090"/>
-    <!-- 口 -->
-    <path d="M55 83 Q60 87 65 83" stroke="#788090" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <!-- マフラー（ふわっと） -->
-    <path d="M24 90 Q60 102 96 90" stroke="#3A88D8" stroke-width="12" fill="none" stroke-linecap="round"/>
-    <path d="M24 90 Q60 102 96 90" stroke="#5AAAE8" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.5"/>
-    <!-- マフラーの垂れ -->
-    <ellipse cx="32" cy="93" rx="11" ry="7" fill="#3A88D8" transform="rotate(14 32 93)"/>
-    <!-- 雪の結晶 -->
-    <g opacity="0.8" transform="translate(93,34)">
-      <line x1="0" y1="-10" x2="0" y2="10" stroke="#AED6F8" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="-10" y1="0" x2="10" y2="0" stroke="#AED6F8" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="-7" y1="-7" x2="7" y2="7" stroke="#AED6F8" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="7" y1="-7" x2="-7" y2="7" stroke="#AED6F8" stroke-width="1.8" stroke-linecap="round"/>
-    </g>
-    <g opacity="0.55" transform="translate(20,40)">
-      <line x1="0" y1="-7" x2="0" y2="7" stroke="#AED6F8" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="-7" y1="0" x2="7" y2="0" stroke="#AED6F8" stroke-width="1.8" stroke-linecap="round"/>
-      <line x1="-5" y1="-5" x2="5" y2="5" stroke="#AED6F8" stroke-width="1.3" stroke-linecap="round"/>
-      <line x1="5" y1="-5" x2="-5" y2="5" stroke="#AED6F8" stroke-width="1.3" stroke-linecap="round"/>
-    </g>
-  </svg>`,
-
-  /* ペンギン：黒白ツートン、オレンジくちばし・足、片目ウィンク */
-  penguin: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- 足 -->
-    <ellipse cx="50" cy="112" rx="12" ry="7" fill="#F5A820" transform="rotate(-8 50 112)"/>
-    <ellipse cx="70" cy="112" rx="12" ry="7" fill="#F5A820" transform="rotate(8 70 112)"/>
-    <!-- 体（黒） -->
-    <ellipse cx="60" cy="90" rx="28" ry="30" fill="#282830"/>
-    <!-- お腹（白） -->
-    <ellipse cx="60" cy="92" rx="19" ry="24" fill="#F5F5F0"/>
-    <!-- 羽 -->
-    <ellipse cx="32" cy="90" rx="12" ry="22" fill="#282830" transform="rotate(-8 32 90)"/>
-    <ellipse cx="88" cy="90" rx="12" ry="22" fill="#282830" transform="rotate(8 88 90)"/>
-    <!-- 頭（黒） -->
-    <circle cx="60" cy="62" r="30" fill="#282830"/>
-    <!-- 顔の白い部分 -->
-    <ellipse cx="60" cy="65" rx="22" ry="24" fill="#F5F5F0"/>
-    <!-- 目（左・開いてる） -->
-    <circle cx="49" cy="60" r="8.5" fill="#100810"/>
-    <circle cx="51.5" cy="57.5" r="3.5" fill="white"/>
-    <circle cx="53" cy="56.5" r="1.4" fill="white" opacity="0.7"/>
-    <!-- 目（右・ウィンク） -->
-    <path d="M65 59 Q72 54 79 59" stroke="#F5F5F0" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <path d="M67 61.5 Q72 66 77 61.5" stroke="#282830" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <!-- くちばし（オレンジ三角） -->
-    <path d="M54 73 L60 80 L66 73 Z" fill="#F5A820"/>
-    <!-- ほっぺ -->
-    <circle cx="40" cy="67" r="5.5" fill="#FFB0B0" opacity="0.5"/>
-    <circle cx="80" cy="67" r="5.5" fill="#FFB0B0" opacity="0.5"/>
-    <!-- 枕跡 -->
-    <path d="M40 59 Q43 51 48 56" stroke="#7080A0" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-    <path d="M38 65 Q41 57 45 62" stroke="#7080A0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
-  </svg>`,
-
-  /* イルカ：なめらかなボディ、笑顔 */
-  dolphin: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <!-- キラキラ星 -->
-    <path d="M94 18 L95.5 13 L97 18 L102 19.5 L97 21 L95.5 26 L94 21 L89 19.5 Z" fill="#FFD700" opacity="0.95"/>
-    <path d="M18 34 L19.2 30 L20.4 34 L24.4 35.2 L20.4 36.4 L19.2 40.4 L18 36.4 L14 35.2 Z" fill="#7DCCE0" opacity="0.75"/>
-    <path d="M101 55 L102 51.5 L103 55 L106.5 56 L103 57 L102 60.5 L101 57 L97.5 56 Z" fill="#FFD700" opacity="0.65"/>
-    <!-- 背びれ -->
-    <path d="M72 54 Q82 34 86 24 Q80 44 78 55 Z" fill="#4AA8C8"/>
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
     <!-- しっぽ -->
-    <path d="M18 72 Q8 60 4 48 Q14 56 18 72 Z" fill="#4AA8C8"/>
-    <path d="M18 72 Q6 76 2 66 Q12 64 18 72 Z" fill="#4AA8C8"/>
-    <!-- 体メイン -->
-    <path d="M98 78 Q88 50 60 52 Q28 52 18 72 Q10 90 42 100 Q62 108 86 102 Q108 94 98 78 Z" fill="#50B4D0"/>
-    <!-- お腹（明るい） -->
-    <path d="M92 80 Q84 58 64 62 Q40 62 32 76 Q24 90 50 96 Q68 104 84 100 Q100 92 92 80 Z" fill="#78CCE0"/>
-    <!-- 目 -->
-    <circle cx="82" cy="70" r="8" fill="#182838"/>
-    <circle cx="84.5" cy="67.5" r="3.3" fill="white"/>
-    <circle cx="86" cy="66.5" r="1.3" fill="white" opacity="0.7"/>
-    <!-- 笑顔 -->
-    <path d="M72 78 Q82 88 92 78" stroke="#3A98B8" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="96" cy="97" rx="20" ry="13" fill="#E88030" transform="rotate(28 96 97)"/>
+    <ellipse cx="98" cy="99" rx="13" ry="8" fill="#FFF0E0" transform="rotate(28 98 99)"/>
+    <!-- 絵文字 -->
+    <text x="54" y="74" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🦊</text>
     <!-- ほっぺ -->
-    <ellipse cx="74" cy="75" rx="8" ry="5" fill="#B0E4F8" opacity="0.45"/>
-    <!-- 水しぶき -->
-    <ellipse cx="38" cy="104" rx="22" ry="7" fill="#A8E4F8" opacity="0.35"/>
-    <path d="M24 101 Q29 90 34 98" stroke="#78C8E8" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/>
-    <path d="M46 98 Q51 87 56 95" stroke="#78C8E8" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/>
+    <circle cx="28" cy="82" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <circle cx="80" cy="82" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <!-- レンズケース -->
+    <rect x="14" y="92" width="22" height="16" rx="8" fill="#60C0E0"/>
+    <line x1="14" y1="100" x2="36" y2="100" stroke="white" stroke-width="2" opacity="0.7"/>
+    <circle cx="25" cy="96" r="2.5" fill="white" opacity="0.7"/>
+    <circle cx="25" cy="104" r="2.5" fill="white" opacity="0.7"/>
   </svg>`,
 
-  /* ラクダ：こぶ2つが一目瞭然 */
-  camel: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="114" rx="26" ry="4" fill="rgba(0,0,0,0.08)"/>
-    <!-- こぶ（2つ、しっかり大きく） -->
-    <ellipse cx="43" cy="54" rx="22" ry="26" fill="#C8A248"/>
-    <ellipse cx="43" cy="50" rx="15" ry="18" fill="#DABB58"/>
-    <ellipse cx="74" cy="56" rx="20" ry="24" fill="#C8A248"/>
-    <ellipse cx="74" cy="52" rx="14" ry="16" fill="#DABB58"/>
-    <!-- 体 -->
-    <ellipse cx="60" cy="92" rx="30" ry="26" fill="#D4A850"/>
-    <!-- 足 -->
-    <rect x="38" y="108" width="14" height="12" rx="6" fill="#B88830"/>
-    <rect x="68" y="108" width="14" height="12" rx="6" fill="#B88830"/>
-    <!-- 首（長め） -->
-    <rect x="46" y="54" width="20" height="32" rx="10" fill="#C8A248"/>
-    <!-- 頭 -->
-    <ellipse cx="56" cy="56" rx="26" ry="22" fill="#D4A850"/>
-    <ellipse cx="56" cy="60" rx="21" ry="17" fill="#E8C070"/>
-    <!-- 耳 -->
-    <ellipse cx="38" cy="48" rx="9" ry="13" fill="#C8A248" transform="rotate(-15 38 48)"/>
-    <ellipse cx="38" cy="49" rx="5.5" ry="8" fill="#FFCCA0" transform="rotate(-15 38 49)"/>
-    <ellipse cx="74" cy="48" rx="9" ry="13" fill="#C8A248" transform="rotate(15 74 48)"/>
-    <ellipse cx="74" cy="49" rx="5.5" ry="8" fill="#FFCCA0" transform="rotate(15 74 49)"/>
+  deer: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 花粉 -->
+    <circle cx="18" cy="26" r="7" fill="#C8E840" opacity="0.88"/>
+    <circle cx="25" cy="15" r="5" fill="#FFEE40" opacity="0.78"/>
+    <circle cx="10" cy="16" r="5.5" fill="#C8E840" opacity="0.72"/>
+    <circle cx="100" cy="30" r="6.5" fill="#C8E840" opacity="0.82"/>
+    <circle cx="108" cy="19" r="4.5" fill="#FFEE40" opacity="0.72"/>
+    <circle cx="98" cy="16" r="4" fill="#C8E840" opacity="0.65"/>
+    <!-- 絵文字 -->
+    <text x="60" y="76" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🦌</text>
     <!-- ほっぺ -->
-    <circle cx="40" cy="62" r="6" fill="#FFB0B0" opacity="0.45"/>
-    <circle cx="72" cy="62" r="6" fill="#FFB0B0" opacity="0.45"/>
-    <!-- 目 -->
-    <circle cx="46" cy="56" r="7.5" fill="#180E04"/>
-    <circle cx="66" cy="56" r="7.5" fill="#180E04"/>
-    <circle cx="48.5" cy="53.5" r="3" fill="white"/>
-    <circle cx="68.5" cy="53.5" r="3" fill="white"/>
-    <circle cx="50" cy="52.5" r="1.2" fill="white" opacity="0.7"/>
-    <circle cx="70" cy="52.5" r="1.2" fill="white" opacity="0.7"/>
-    <!-- 長い鼻先 -->
-    <ellipse cx="56" cy="68" rx="14" ry="9" fill="#C89848"/>
-    <ellipse cx="50" cy="67" rx="4.5" ry="3.5" fill="#A07830"/>
-    <ellipse cx="62" cy="67" rx="4.5" ry="3.5" fill="#A07830"/>
+    <circle cx="30" cy="84" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <circle cx="90" cy="84" r="8" fill="#FFB8B8" opacity="0.5"/>
+  </svg>`,
+
+  otter: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="28" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 絵文字 -->
+    <text x="60" y="72" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🦦</text>
+    <!-- ほっぺ -->
+    <circle cx="28" cy="78" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <circle cx="92" cy="78" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <!-- 貝（お腹に） -->
+    <ellipse cx="60" cy="100" rx="20" ry="11" fill="#F8D060"/>
+    <ellipse cx="60" cy="100" rx="16" ry="8.5" fill="#FFE070"/>
+    <path d="M46 100 Q60 93 74 100" stroke="#C8A030" stroke-width="1.8" fill="none" opacity="0.7"/>
+    <path d="M48 104 Q60 97 72 104" stroke="#C8A030" stroke-width="1.3" fill="none" opacity="0.5"/>
+  </svg>`,
+
+  panda: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 絵文字 -->
+    <text x="60" y="74" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🐼</text>
+    <!-- ほっぺ -->
+    <circle cx="28" cy="82" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <circle cx="92" cy="82" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <!-- ×マーク -->
+    <circle cx="90" cy="100" r="14" fill="#FF4444" opacity="0.16"/>
+    <line x1="84" y1="94" x2="96" y2="106" stroke="#FF3333" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="96" y1="94" x2="84" y2="106" stroke="#FF3333" stroke-width="4.5" stroke-linecap="round"/>
+  </svg>`,
+
+  beaver: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- しっぽ（平べったい） -->
+    <ellipse cx="78" cy="108" rx="26" ry="11" fill="#6A4820" transform="rotate(-12 78 108)"/>
+    <ellipse cx="78" cy="109" rx="21" ry="8" fill="#8A6030" transform="rotate(-12 78 109)"/>
+    <path d="M58 107 Q72 102 84 108" stroke="#4A3010" stroke-width="1.5" fill="none" opacity="0.45"/>
+    <!-- 絵文字 -->
+    <text x="56" y="74" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🦫</text>
+    <!-- ほっぺ -->
+    <circle cx="28" cy="82" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <circle cx="84" cy="82" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <!-- ブラシ -->
+    <rect x="84" y="70" width="11" height="24" rx="4" fill="#C49A38"/>
+    <rect x="82" y="92" width="15" height="10" rx="4" fill="#A87828"/>
+    <ellipse cx="89" cy="102" rx="9" ry="5.5" fill="#FFD858" opacity="0.92"/>
+  </svg>`,
+
+  capybara: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="26" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 体（どっしり） -->
+    <rect x="20" y="76" width="80" height="36" rx="26" fill="#B09060"/>
+    <!-- 頭（四角くて大きい・カピバラらしさ） -->
+    <rect x="22" y="44" width="76" height="46" rx="20" fill="#C4A870"/>
+    <!-- 鼻先（少し突き出た） -->
+    <ellipse cx="60" cy="78" rx="26" ry="14" fill="#D0B07A"/>
+    <!-- サウナ帽（赤・ボンボン） -->
+    <ellipse cx="60" cy="40" rx="38" ry="10" fill="#D83030"/>
+    <rect x="22" y="30" width="76" height="14" rx="7" fill="#D83030"/>
+    <ellipse cx="60" cy="30" rx="32" ry="22" fill="#D83030"/>
+    <ellipse cx="60" cy="24" rx="26" ry="16" fill="#E85050"/>
+    <circle cx="60" cy="13" r="11" fill="#FAFAFA"/>
+    <!-- 湯気（3本・太め） -->
+    <path d="M86 42 Q94 28 86 16" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.78"/>
+    <path d="M97 46 Q106 30 98 18" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.58"/>
+    <path d="M107 50 Q114 36 108 24" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.4"/>
+    <!-- 目（まんまる・ちびキャラ） -->
+    <circle cx="47" cy="62" r="8" fill="#1A0A02"/>
+    <circle cx="73" cy="62" r="8" fill="#1A0A02"/>
+    <circle cx="49.5" cy="59.5" r="3.5" fill="white"/>
+    <circle cx="75.5" cy="59.5" r="3.5" fill="white"/>
+    <circle cx="51" cy="58.5" r="1.4" fill="white" opacity="0.7"/>
+    <circle cx="77" cy="58.5" r="1.4" fill="white" opacity="0.7"/>
+    <!-- ほっぺ（でっかく） -->
+    <ellipse cx="34" cy="68" rx="9" ry="6" fill="#FFB8B8" opacity="0.55"/>
+    <ellipse cx="86" cy="68" rx="9" ry="6" fill="#FFB8B8" opacity="0.55"/>
+    <!-- 大きい鼻（カピバラの命） -->
+    <ellipse cx="60" cy="75" rx="15" ry="9" fill="#A07848"/>
+    <ellipse cx="54" cy="74" rx="5.5" ry="4" fill="#8A6030"/>
+    <ellipse cx="66" cy="74" rx="5.5" ry="4" fill="#8A6030"/>
     <!-- 口 -->
-    <path d="M50 72 Q56 77 62 72" stroke="#A07830" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M53 79 Q60 85 67 79" stroke="#8A6030" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </svg>`,
+
+  koala: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- Zzz -->
+    <text x="84" y="44" font-size="16" fill="#9090A8" font-family="Arial" font-weight="bold" opacity="0.88">Z</text>
+    <text x="93" y="33" font-size="12" fill="#9090A8" font-family="Arial" font-weight="bold" opacity="0.68">z</text>
+    <text x="100" y="24" font-size="9" fill="#9090A8" font-family="Arial" font-weight="bold" opacity="0.5">z</text>
+    <!-- 絵文字 -->
+    <text x="60" y="76" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🐨</text>
+    <!-- ほっぺ -->
+    <circle cx="28" cy="83" r="8" fill="#B8C8E8" opacity="0.5"/>
+    <circle cx="92" cy="83" r="8" fill="#B8C8E8" opacity="0.5"/>
+    <!-- 抱き枕 -->
+    <ellipse cx="18" cy="100" rx="10" ry="18" fill="#C8E0F4" transform="rotate(12 18 100)"/>
+  </svg>`,
+
+  polarbear: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 雪の結晶（大） -->
+    <g opacity="0.88" transform="translate(94,32)">
+      <line x1="0" y1="-13" x2="0" y2="13" stroke="#70C0F8" stroke-width="3" stroke-linecap="round"/>
+      <line x1="-13" y1="0" x2="13" y2="0" stroke="#70C0F8" stroke-width="3" stroke-linecap="round"/>
+      <line x1="-9" y1="-9" x2="9" y2="9" stroke="#70C0F8" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="9" y1="-9" x2="-9" y2="9" stroke="#70C0F8" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="-13" r="2.5" fill="#A8DCF8"/>
+      <circle cx="0" cy="13" r="2.5" fill="#A8DCF8"/>
+      <circle cx="-13" cy="0" r="2.5" fill="#A8DCF8"/>
+      <circle cx="13" cy="0" r="2.5" fill="#A8DCF8"/>
+    </g>
+    <!-- 雪の結晶（小） -->
+    <g opacity="0.62" transform="translate(20,40)">
+      <line x1="0" y1="-9" x2="0" y2="9" stroke="#70C0F8" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="-9" y1="0" x2="9" y2="0" stroke="#70C0F8" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="-6" y1="-6" x2="6" y2="6" stroke="#70C0F8" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="6" y1="-6" x2="-6" y2="6" stroke="#70C0F8" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+    <!-- 絵文字 -->
+    <text x="60" y="76" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🐻‍❄️</text>
+    <!-- ほっぺ（水色） -->
+    <circle cx="28" cy="83" r="8" fill="#88C8F0" opacity="0.52"/>
+    <circle cx="92" cy="83" r="8" fill="#88C8F0" opacity="0.52"/>
+    <!-- マフラー -->
+    <path d="M24 100 Q60 112 96 100" stroke="#3A88D8" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M24 100 Q60 112 96 100" stroke="#6AAAE8" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <ellipse cx="30" cy="103" rx="10" ry="7" fill="#3A88D8" transform="rotate(14 30 103)"/>
+  </svg>`,
+
+  penguin: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 枕跡 -->
+    <path d="M32 60 Q36 50 42 56" stroke="#7080A0" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.62"/>
+    <path d="M30 67 Q34 57 40 63" stroke="#7080A0" stroke-width="2.3" fill="none" stroke-linecap="round" opacity="0.42"/>
+    <!-- 絵文字 -->
+    <text x="60" y="76" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🐧</text>
+    <!-- ほっぺ -->
+    <circle cx="30" cy="82" r="8" fill="#FFB8B8" opacity="0.52"/>
+    <circle cx="90" cy="82" r="8" fill="#FFB8B8" opacity="0.52"/>
+  </svg>`,
+
+  dolphin: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- キラキラ -->
+    <path d="M98 18 L99.4 13.5 L100.8 18 L105.3 19.4 L100.8 20.8 L99.4 25.3 L98 20.8 L93.5 19.4 Z" fill="#FFD700" opacity="0.92"/>
+    <path d="M14 26 L15 22.5 L16 26 L19.5 27 L16 28 L15 31.5 L14 28 L10.5 27 Z" fill="#88CCDD" opacity="0.72"/>
+    <path d="M104 52 L105 49 L106 52 L109 53 L106 54 L105 57 L104 54 L101 53 Z" fill="#FFD700" opacity="0.62"/>
+    <!-- 絵文字 -->
+    <text x="60" y="76" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🐬</text>
+    <!-- ほっぺ -->
+    <circle cx="28" cy="80" r="8" fill="#88D8F0" opacity="0.48"/>
+    <circle cx="92" cy="80" r="8" fill="#88D8F0" opacity="0.48"/>
+    <!-- 水しぶき -->
+    <ellipse cx="60" cy="106" rx="22" ry="6" fill="#A0DCF0" opacity="0.42"/>
+    <path d="M46 103 Q50 94 55 101" stroke="#70C0E0" stroke-width="2.5" fill="none" opacity="0.65" stroke-linecap="round"/>
+    <path d="M64 101 Q68 92 73 99" stroke="#70C0E0" stroke-width="2.5" fill="none" opacity="0.65" stroke-linecap="round"/>
+  </svg>`,
+
+  camel: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <!-- 絵文字 -->
+    <text x="56" y="74" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🐪</text>
+    <!-- ほっぺ -->
+    <circle cx="24" cy="76" r="8" fill="#FFB8B8" opacity="0.5"/>
+    <circle cx="88" cy="76" r="8" fill="#FFB8B8" opacity="0.5"/>
     <!-- 水筒 -->
-    <rect x="79" y="72" width="16" height="24" rx="6" fill="#58AABF"/>
-    <rect x="81" y="67" width="12" height="8" rx="4" fill="#468EA0"/>
-    <ellipse cx="87" cy="65" rx="5" ry="3.2" fill="#58AABF" opacity="0.75"/>
-    <path d="M82 81 Q87 79 92 81" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/>
-    <path d="M82 86 Q87 84 92 86" stroke="white" stroke-width="1.5" fill="none" opacity="0.4"/>
-    <!-- 汗（水分ムラ） -->
-    <path d="M77 90 Q74 97 77 103" stroke="#78C8E0" stroke-width="2" fill="none" opacity="0.65"/>
+    <rect x="86" y="80" width="17" height="27" rx="6" fill="#5AAABE"/>
+    <rect x="88" y="74" width="13" height="9" rx="4" fill="#489AB0"/>
+    <ellipse cx="94.5" cy="72" rx="5.5" ry="3.5" fill="#5AAABE" opacity="0.78"/>
+    <path d="M89 90 Q94.5 88 100 90" stroke="white" stroke-width="1.8" fill="none" opacity="0.6"/>
+    <path d="M89 96 Q94.5 94 100 96" stroke="white" stroke-width="1.8" fill="none" opacity="0.4"/>
+    <!-- 汗 -->
+    <path d="M84 92 Q80 100 84 106" stroke="#78C8E0" stroke-width="2.2" fill="none" opacity="0.7" stroke-linecap="round"/>
+  </svg>`,
+
+  snake: `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="113" rx="22" ry="4" fill="rgba(0,0,0,0.08)"/>
+    <path d="M16 24 Q28 14 40 24 Q52 34 64 24 Q76 14 88 24 Q100 34 104 46" stroke="#88C870" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+    <circle cx="104" cy="46" r="4.5" fill="#88C870" opacity="0.6"/>
+    <text x="60" y="76" text-anchor="middle" dominant-baseline="middle" font-size="68" font-family="Apple Color Emoji,Segoe UI Emoji,Noto Color Emoji,sans-serif">🐍</text>
+    <circle cx="28" cy="80" r="8" fill="#B8F0B8" opacity="0.5"/>
+    <circle cx="92" cy="80" r="8" fill="#B8F0B8" opacity="0.5"/>
+    <circle cx="20" cy="96" r="5" fill="#C8E870" opacity="0.5"/>
+    <circle cx="32" cy="104" r="3.5" fill="#A8D860" opacity="0.45"/>
+    <circle cx="12" cy="104" r="4" fill="#C8E870" opacity="0.4"/>
   </svg>`
+
 };
 
 // ===== TYPE DATA =====
@@ -1234,15 +1016,15 @@ const typeData = {
     nameShort: 'からっカラのハリネズミ',
     tag: '乾燥タイプ',
     color: '#8B6340', bg: '#FEF3E8',
-    message: '乾燥に強そうで実は砂漠。\n部屋の空気を変えたら持ちが化ける。',
-    detail: 'まつ毛がバラける・乗らへん・持ちが安定しない。スキンケアも変えてないのに…って思ってない？ 実はそれ、まつ毛の問題じゃなくて【空気と水分の乾燥】から来てるかも。体の中も外も乾燥してると、まつ毛のキワまでカサカサになって、どんないいグルーを使っても安定しない。「そういえば部屋乾燥してるかも」「水あんまり飲んでないかも」って思ったなら正解。まさかここが原因だったんか！って感じ？ 解決の仕方、LINEで話しよ👇',
-    priority: ['部屋の乾燥をなくす（加湿ミストが一番ラク）', '水はちょこちょこ飲む（一気飲みはNG）', '保湿目薬で目のうるおいを補給'],
+    message: '部屋も体の中も、水分が足りてない状態。\nまつ毛がまとまりにくいのはそのサイン。',
+    detail: '今のまつ毛、バラバラしやすかったり、施術後のまとまりが続かないと感じてない？ それはまつ毛自体の問題じゃなくて、周りの乾燥と体内の水分不足が重なってる状態のサイン。エアコンや乾燥した空気の中にいると、まつ毛のキワから水分がどんどん蒸発していく。体の中の水分も足りてないと、目元まで潤いが届きにくくなる。今のあなたのまつ毛は「内側と外側、両方から乾いてる」状態。',
+    priority: ['部屋の乾燥対策をする（加湿・ミストが有効）', 'まつ毛美容液は保湿タイプを毎日つける', '水分補給をこまめに意識してみる'],
     care: [
-      { icon: '💧', name: '保湿目薬', sub: '目の乾きをうるおいで満たしてくれる' },
-      { icon: '🖌️', name: 'ハケタイプ美容液', sub: 'まつ毛の根元にピンポイントで栄養を届ける' },
-      { icon: '🌫️', name: 'フェイスミスト or 加湿器', sub: '空気のうるおいをキープ' }
+      { icon: '💧', name: '保湿タイプのまつ毛美容液', sub: 'キワにたっぷり。チップタイプが使いやすい' },
+      { icon: '🌫️', name: 'フェイスミスト・加湿グッズ', sub: 'まつ毛のキワを外側からうるおす' },
+      { icon: '💊', name: '保湿目薬', sub: '目元の乾燥を内側からケア' }
     ],
-    line: '今日から"部屋の乾燥ゼロ"チャレンジ！\nLINEで「湿度」と送ってね💧',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'hedgehog'
   },
   owl: {
@@ -1250,15 +1032,15 @@ const typeData = {
     nameShort: 'まばたき忘れフクロウ',
     tag: 'スマホ見すぎタイプ',
     color: '#5A4020', bg: '#F0EDF9',
-    message: '体質じゃなくて使い方の問題。\nまばたきを取り戻したら変わる。',
-    detail: '目が疲れる・乾く・まつ毛の向きが乱れやすい。「コンタクトのせいかな」「睡眠不足かな」って思ってない？ 違う可能性が高い。スマホや画面を長時間見ると、まばたきが激減する。まばたきが減ると目を守るベールが乱れて、乾きが進む。そのままにしてると、まつ毛の根元まで影響が出てくる。「確かにスマホずっと見てた」ってなった？ 原因、スマホやったわ〜って感じよな。直し方はシンプルやから、LINEで教えるね👇',
-    priority: ['まばたきを意識する（40秒に1回を目安に）', '寝る前にホットアイマスクで目を温める', '疲れたら保湿目薬をさす'],
+    message: 'スマホや乾燥で、まばたきが減ってる。\n目元が乾きやすい状態が続いてる。',
+    detail: 'まつ毛の向きが乱れやすかったり、目が乾く感覚がある日が多くない？ 実はスマホや画面を見ている時間が長いと、まばたきの回数がガクッと減る。まばたきは目を潤す大事な動作。回数が減ると目元の水分バランスが崩れて、まつ毛のキワも乾きやすくなる。今のあなたのまつ毛は「乾燥した環境でずっと目を酷使している」状態にある。',
+    priority: ['意識的にまばたきの回数を増やす', '寝る前にホットアイマスクで目元をほぐす', 'まつ毛美容液は保湿タイプを使う'],
     care: [
-      { icon: '😴', name: 'ホットアイマスク', sub: '目のキワの皮脂バランスを整えてくれる' },
-      { icon: '💧', name: '保湿目薬', sub: 'まばたき不足による乾きをうるおす' },
-      { icon: '🖊️', name: 'チップタイプ美容液', sub: 'まつ毛のキワの細かい部分もケアできる' }
+      { icon: '👁️', name: '保湿タイプのまつ毛美容液', sub: 'キワへの毎日使いで乾燥を防ぐ' },
+      { icon: '🔥', name: 'ホットアイマスク', sub: '目元の疲れと乾燥を同時にケア' },
+      { icon: '💊', name: '保湿目薬', sub: '乾き対策に常備するのがおすすめ' }
     ],
-    line: '"40秒に1回まばたき"だけやろ！\n完了したらLINEで「できた」って送って👁️',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'owl'
   },
   fox: {
@@ -1266,15 +1048,15 @@ const typeData = {
     nameShort: 'コンタクトキツネ',
     tag: 'こすり・乾燥タイプ',
     color: '#B85A20', bg: '#FEF2E8',
-    message: '見えてるけど、実は負担かかってる。\n夕方のこすりが犯人。',
-    detail: '夕方になると目がかゆい・ゴロゴロする・目元が荒れてる気がする。コンタクトのせいだと思ってない？ 半分正解、半分違う。コンタクトで乾きやすくなった目を、無意識にこすってる。このこすりが積み重なって、まつ毛のモチをじわじわ落としてた。「夕方に触ってたかも…」ってなった？ それが犯人やった。こすらない仕組みの作り方、LINEで送るね👇',
-    priority: ['夕方の"無意識こすり"をゼロにする', 'コンタクト用の目薬を常備する', 'まつ毛のキワを優しく洗浄する'],
+    message: 'コンタクトで乾きやすく、\n無意識にこすってしまっている状態。',
+    detail: '夕方になると目がゴロゴロしたり、なんとなく触りたくなる感覚、ある？ コンタクトをつけていると目が乾きやすくなる。乾いた目を守ろうとして、無意識に手で触れてしまう。この積み重ねがまつ毛のキワにダメージを与えている。今のあなたのまつ毛は「乾燥＋摩擦が毎日少しずつ蓄積されている」状態にある。',
+    priority: ['夕方の目元への無意識タッチをなくす', 'コンタクト用の目薬を日中こまめにさす', 'まつ毛のキワは優しく丁寧に洗う'],
     care: [
-      { icon: '👁️', name: 'コンタクト用目薬', sub: 'コンタクトしたままさせるタイプを選ぶ' },
-      { icon: '🧴', name: 'コーティング系美容液', sub: 'まつ毛を保護してこすりダメージを防ぐ' },
-      { icon: '🫧', name: 'キワ洗浄（アイシャンプー）', sub: '目のキワの汚れをやさしく落とす' }
+      { icon: '👁️', name: 'コンタクト用の保湿目薬', sub: 'レンズをつけたままOKなタイプを選ぶ' },
+      { icon: '🛡️', name: 'コーティング系まつ毛美容液', sub: '摩擦ダメージからまつ毛を守る' },
+      { icon: '🫧', name: 'アイシャンプー（キワ洗浄）', sub: 'キワの汚れをやさしく落とす' }
     ],
-    line: '"夕方のこすり"をゼロにする作戦送るよ！\nLINEで「レンズ」と返信してね🔵',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'fox'
   },
   deer: {
@@ -1282,15 +1064,15 @@ const typeData = {
     nameShort: '花粉シカ',
     tag: 'かゆみ×こすりタイプ',
     color: '#5A8020', bg: '#F4FAE8',
-    message: '敵は花粉じゃなくて"こすり"。\n触らない仕組みで勝てる。',
-    detail: '毎年この時期だけまつ毛がすぐ取れる・根元が荒れる・目元が敏感になる。「季節のせいだからしょうがない」って諦めてない？ でも本当の原因は季節じゃなくて【こすり】。かゆくて触る→傷む→取れる、この繰り返し。気づかなかっただけで、こすりがずっと積み重なってた。まさかここが原因だったのか！ってなった？ 触らない仕組みの作り方、LINEで教えるね👇',
-    priority: ['かゆくなったら目をこする→目薬に置き換える', 'まつ毛のキワを優しく洗う', '寝る前にホットアイマスクで置き換える'],
+    message: '花粉や刺激で、気づかずにこすっている。\nまつ毛が傷みやすい時期が続いている。',
+    detail: 'この時期だけまつ毛の状態が気になる、目元がかゆくなる、という経験はある？ 花粉やアレルギーの刺激で目がかゆくなると、無意識に手で触れてしまう。この「かゆい→触る」の繰り返しが、まつ毛のキワにじわじわとダメージを与えている。今のあなたのまつ毛は「外からの刺激に繰り返しさらされている」状態にある。',
+    priority: ['かゆいときは触らず目薬で対処する', 'まつ毛のキワをやさしく洗う習慣をつける', 'まつ毛美容液は補修タイプを使う'],
     care: [
-      { icon: '💧', name: '保湿目薬', sub: 'かゆみで触りたくなったときの代わりに' },
-      { icon: '🫧', name: 'キワ洗浄（アイシャンプー）', sub: 'キワの汚れやアレルゲンをオフ' },
-      { icon: '😴', name: 'ホットアイマスク', sub: '触りたい衝動を温めで抑える' }
+      { icon: '💊', name: '抗アレルギー系の目薬', sub: 'かゆみを抑えて「触らない」を実現' },
+      { icon: '✨', name: '補修タイプのまつ毛美容液', sub: 'ダメージを受けたまつ毛をケア' },
+      { icon: '🫧', name: 'アイシャンプー（キワ洗浄）', sub: '花粉・汚れをやさしく除去' }
     ],
-    line: '"こすりゼロ"3日だけやろ！\n代替行動3つをLINEで「花粉」と返信してもらったら送るね🌸',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'deer'
   },
   otter: {
@@ -1298,15 +1080,15 @@ const typeData = {
     nameShort: '皮脂ぷかラッコ',
     tag: '皮脂・残留タイプ',
     color: '#6A4020', bg: '#E8F4FE',
-    message: '洗えてるつもりで残ってる。\n落とし方を変えたら持ちが戻る。',
-    detail: 'まつ毛、洗ってるのになんかベタつく・根元が浮く・モチが悪い。「ちゃんと洗ってるのに…」って思ってない？ 実は、洗えてるつもりで残ってるかも。スキンケアや皮脂がまつ毛のキワに残ってると、土台がすべりやすい状態になる。どんなに施術が上手くても、土台が滑ったらモチは落ちる。「そういえば目のキワ、ちゃんと洗えてないかも」って思った？ そこが盲点やった。正しい落とし方、LINEで話しよ👇',
-    priority: ['まつ毛のキワまでちゃんと落とす', '重くないまつ毛美容液を選ぶ', '週2〜3回ホットアイマスクでリセット'],
+    message: 'まつ毛のキワに皮脂や汚れが残りやすい状態。\n洗えてるつもりでも、残っていることが多い。',
+    detail: 'スキンケアをしっかりしてるのに、まつ毛のキワがなんとなくベタつく感じがある？ 肌質的に皮脂が多めだったり、スキンケアが目元まで残りやすいタイプは、まつ毛のキワに汚れが蓄積しやすい。洗顔で落としているつもりでも、細かいキワまで届いていないことが多い。今のあなたのまつ毛は「根元の環境が整いにくい」状態にある。',
+    priority: ['まつ毛のキワをしっかり洗浄する', 'スキンケアをキワにつけすぎない', '軽めの仕上がりのまつ毛美容液を選ぶ'],
     care: [
-      { icon: '🫧', name: 'アイシャンプー', sub: 'まつ毛のキワの皮脂・汚れを丁寧に落とす' },
-      { icon: '🖌️', name: '軽めのハケタイプ美容液', sub: '重さを出さずに根元をケア' },
-      { icon: '😴', name: 'ホットアイマスク', sub: '目のキワの皮脂バランスを整える' }
+      { icon: '🫧', name: 'アイシャンプー（キワ洗浄）', sub: '毎日のキワ洗いが根本ケアに' },
+      { icon: '✨', name: '軽めのまつ毛美容液', sub: '重すぎないテクスチャーを選ぶ' },
+      { icon: '🔥', name: 'ホットアイマスク', sub: '週2〜3回で目元をリセット' }
     ],
-    line: '"まつ毛のキワ洗い"のやり方送るよ！\nLINEで「洗い方」と返信してね🦦',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'otter'
   },
   panda: {
@@ -1314,15 +1096,15 @@ const typeData = {
     nameShort: 'ゴシゴシパンダ',
     tag: 'やりすぎタイプ',
     color: '#2A2A2A', bg: '#F0F0F0',
-    message: 'ケア頑張ってるのに逆効果。\n優しくするだけで最短で復活できる。',
-    detail: 'ケアは毎日頑張ってる。なのにまつ毛が弱い・切れやすい・なんか元気ない。「なんで頑張ってるのに…」ってなってない？ 実は、ケアのやり方が逆効果になってるかも。洗うときの力が強すぎると、目元に摩擦をかけ続けてしまう。頑張りが「攻撃」になってた、ってパターン。「確かにゴシゴシしてた…」ってなった？ 優しくするだけで変わる。詳しくはLINEで👇',
-    priority: ['洗顔・クレンジングは"こすらない"に切り替える', 'まつ毛のキワを優しく丁寧に洗う', '補修系まつ毛美容液で守る'],
+    message: 'ケアは頑張ってるのに、まつ毛への摩擦が多い状態。\n力の加わり方を見直すだけで変わる。',
+    detail: 'ケアを毎日しているのに、まつ毛が思ったより弱かったり、切れやすい感じがする？ 頑張っているのに結果が出ないとき、ケアの「力加減」が原因になっていることがある。洗顔や目元のケアで、気づかず摩擦をかけていることがある。今のあなたのまつ毛は「頑張りが逆にダメージになっている」状態かもしれない。',
+    priority: ['洗顔・クレンジングは力を抜いてやさしく', 'まつ毛のキワはこすらずやさしく洗う', '補修タイプのまつ毛美容液で回復を助ける'],
     care: [
-      { icon: '🖌️', name: 'ハケタイプ補修美容液', sub: 'ダメージを受けたまつ毛を内側から補修' },
-      { icon: '🫧', name: 'アイシャンプー', sub: '摩擦ゼロでまつ毛のキワを洗える' },
-      { icon: '😴', name: 'ホットアイマスク', sub: '夜の"触りたい"衝動をやさしく抑える' }
+      { icon: '✨', name: '補修タイプのまつ毛美容液', sub: 'ダメージを受けたまつ毛の回復に' },
+      { icon: '🫧', name: 'アイシャンプー（やさしい洗浄）', sub: '摩擦ゼロで汚れを落とす' },
+      { icon: '🛡️', name: 'コーティング系美容液', sub: 'まつ毛を摩擦から守るバリアに' }
     ],
-    line: '"こすらず落とす"手順をLINEで送るよ！\n「摩擦」と返信してね🐼',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'panda'
   },
   beaver: {
@@ -1330,15 +1112,15 @@ const typeData = {
     nameShort: 'コーティングビーバー',
     tag: '塗りすぎタイプ',
     color: '#6A5020', bg: '#FEF8E0',
-    message: '守ろうとして逆に崩れてる。\n一回リセットしたら変わる。',
-    detail: 'まつ毛の向きが乱れる・根元が詰まってる感じ・なんか重い。美容液やコーティング、増やしたりしてない？ 実はそれが原因かも。層が厚くなりすぎると根元が詰まって、逆にモチが落ちる。守ろうとして守れてなかった、っていうパターン。「あ、やりすぎてたかも…」ってなった？ 正解。引き算のケア方法、LINEで一緒に考えよ👇',
-    priority: ['"足す前に落とす"を習慣にする', 'まつ毛のキワをアイシャンプーでリセット', 'コーティングは軽さ最優先に変える'],
+    message: 'まつ毛のケアをしっかりしているタイプ。\nただ、重ね塗りが根元を詰まらせている可能性がある。',
+    detail: 'まつ毛に何かを塗るのが習慣になってるのに、向きが乱れたり、なんか重い感じがする？ ケアをしっかりするタイプほど「重ね塗り」になりやすい。コーティングや美容液が何層も積み重なると、根元が詰まって逆にまつ毛の状態が崩れることがある。今のあなたのまつ毛は「守ろうとしすぎている」状態にあるかもしれない。',
+    priority: ['まず今のコーティングをしっかり落としてリセット', '軽めのテクスチャーの美容液に切り替える', 'キワをアイシャンプーで週2〜3回洗浄する'],
     care: [
-      { icon: '🫧', name: 'アイシャンプー', sub: '積み重なった層を根元からリセット' },
-      { icon: '🖊️', name: 'ブラシタイプ軽め美容液', sub: '根元を重くせず整える' },
-      { icon: '🛡️', name: '軽めコーティング', sub: '必要最低限の保護で根元をスッキリ保つ' }
+      { icon: '🫧', name: 'アイシャンプー（キワ洗浄）', sub: '蓄積した層をリセットするために' },
+      { icon: '✨', name: '軽めのまつ毛美容液', sub: '重くなりすぎないものを選ぶ' },
+      { icon: '🛡️', name: '軽量コーティング', sub: '薄く均一につけることを意識' }
     ],
-    line: '根元の"リセット手順"送るよ！\nLINEで「リセット」と返信してね🦫',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'beaver'
   },
   capybara: {
@@ -1346,15 +1128,15 @@ const typeData = {
     nameShort: 'むれむれカピバラ',
     tag: '汗・むれタイプ',
     color: '#804020', bg: '#FFE8E8',
-    message: 'お風呂後そのまま寝てない？\n寝る前のひと手間で全然変わる。',
-    detail: 'お風呂上がり・サウナ後・運動後にそのまま寝てること、ない？ 実はこれ、まつ毛にじわじわ影響してる。汗や蒸気のあとにそのまま寝ると、キワに汚れや皮脂が残り続ける。積み重なるほどモチが落ちる。「そのまま寝てたかも…」って思った？ ほぼそれが原因やと思う。ひと手間加えるだけで全然変わる。ケアの順番、LINEで教えるね👇',
-    priority: ['お風呂・運動後の"キワ洗い"を習慣にする', 'まつ毛のキワを整えてから寝る', '蒸発を防ぐ目薬をさしてから就寝'],
+    message: 'お風呂上がりや運動後にそのまま寝てることが多い。\nキワに汚れが残りやすい状態になっている。',
+    detail: 'サウナや長風呂、運動のあとにそのまま寝てしまうことある？ 汗や蒸気のあとにそのままにしておくと、まつ毛のキワに汚れや皮脂が残りやすくなる。これが毎日続くと、根元の環境が少しずつ乱れていく。今のあなたのまつ毛は「キワのお手入れがもう少し必要」な状態にある。',
+    priority: ['お風呂・運動後はキワを軽く洗う習慣をつける', 'まつ毛美容液は保湿タイプを寝る前につける', '目元の蒸発を防ぐ目薬を就寝前にさす'],
     care: [
-      { icon: '🫧', name: 'アイシャンプー', sub: 'お風呂後のキワの汚れをサッと落とせる' },
-      { icon: '💧', name: '蒸発を防ぐタイプの目薬', sub: '寝ている間の乾燥を防いでくれる' },
-      { icon: '🛡️', name: '軽めコーティング', sub: '寝るときもまつ毛を保護してくれる' }
+      { icon: '🫧', name: 'アイシャンプー（夜のキワ洗い）', sub: '汗・皮脂をその日のうちに落とす' },
+      { icon: '💧', name: '保湿タイプのまつ毛美容液', sub: '洗浄後に潤いを補給' },
+      { icon: '💊', name: '保湿目薬', sub: '就寝前の蒸発対策に' }
     ],
-    line: 'お風呂後の"黄金ルート"送るよ！\nLINEで「むれ」と返信してね🛁',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'capybara'
   },
   koala: {
@@ -1362,15 +1144,15 @@ const typeData = {
     nameShort: '夜更かしコアラ',
     tag: '睡眠不足タイプ',
     color: '#505050', bg: '#EEF2F8',
-    message: '努力不足じゃない。回復不足。\nちゃんと寝るだけでまつ毛変わる。',
-    detail: '最近まつ毛が弱い・取れやすい・回復が遅い気がする。「もしかして寝不足かな…」って薄々思ってない？ そう、正解。睡眠が足りてないと目の乾きが増えて、まつ毛も弱くなりやすい。努力が足りないんじゃなくて、回復が足りてないだけ。でも「もっと寝なきゃ」だけじゃ続かないよね。無理なく続けられる回復習慣、LINEで一緒に作ろ👇',
-    priority: ['寝る時間を固定する（週5日だけでもOK）', '寝る前にホットアイマスクでリラックス', '補修系まつ毛美容液でまつ毛を守る'],
+    message: '睡眠不足や疲れが続いていて、\nまつ毛の回復が追いついていない状態。',
+    detail: '最近、まつ毛が弱くなったとか、切れやすい感じがしてない？ 睡眠が浅かったり不規則が続くと、目元の乾きが増えてまつ毛が回復しにくくなる。頑張っているのに結果が出ないとき、そもそもの「回復時間」が足りていないことがある。今のあなたのまつ毛は「疲れが取れていない体のサインが出ている」状態にある。',
+    priority: ['寝る時間を少しだけ固定してみる', '寝る前にホットアイマスクでリラックスする', '補修タイプのまつ毛美容液を夜につける'],
     care: [
-      { icon: '😴', name: 'ホットアイマスク', sub: '寝る前に目と心をリラックスさせる' },
-      { icon: '🖌️', name: 'ハケタイプ補修美容液', sub: '寝ている間にまつ毛を内側から修復' },
-      { icon: '🌙', name: 'アイクリーム', sub: '目周りの皮膚も一緒に保湿してケア' }
+      { icon: '✨', name: '補修タイプのまつ毛美容液', sub: '就寝中の回復をサポートする' },
+      { icon: '🔥', name: 'ホットアイマスク', sub: '眠りの質を上げながら目元もケア' },
+      { icon: '💊', name: '保湿目薬', sub: '乾き対策に就寝前にさす' }
     ],
-    line: '"就寝時刻+30分"だけやろ！\n続け方のコツをLINEで「睡眠」と返信してもらったら送るね🌙',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'koala'
   },
   polarbear: {
@@ -1378,15 +1160,15 @@ const typeData = {
     nameShort: '冷えこみシロクマ',
     tag: '冷え・乾燥タイプ',
     color: '#2850A0', bg: '#E8F4FE',
-    message: '冬にモチが落ちる人これ。\n温めてから守るだけで持ちが安定する。',
-    detail: '冬になるとまつ毛の持ちが落ちる・目元が乾きやすい・なんか元気ない。「冬だから仕方ない」って思ってない？ でも原因は気温だけじゃなくて、冷えと乾燥の組み合わせ。体が冷えると目周りにうるおいが届きにくくなって、そこに乾燥が重なる。「冷えてるかも」「冷たいもの多いかも」ってなった？ 温めるだけで変わる部分がある。詳しくはLINEで👇',
-    priority: ['ホットアイマスクで目のキワを温めてほぐす', '冬でも部屋の乾燥をなくす', '温かい飲み物で水分をこまめに補給'],
+    message: '体が冷えやすく、目元への水分補給が滞りがち。\n冬や気温が下がるとまつ毛の状態に出やすい。',
+    detail: '冬になるとまつ毛の調子が変わる、目元が乾きやすいと感じることある？ 体が冷えると血流が落ちて、目元まで栄養や水分が届きにくくなる。そこに乾燥した空気が重なると、まつ毛にも影響が出やすい。今のあなたのまつ毛は「冷えによる体内の水分循環の低下」が影響している状態にある。',
+    priority: ['ホットアイマスクで目元を温めてほぐす', '部屋の乾燥対策をする', '温かい飲み物で体の中から温める'],
     care: [
-      { icon: '😴', name: 'ホットアイマスク', sub: '目のキワの皮脂バランスを温めて整える' },
-      { icon: '🖌️', name: 'ハケタイプ保湿美容液', sub: '冷えで乾燥したまつ毛をうるおす' },
-      { icon: '🌫️', name: '加湿器 or ミスト', sub: '部屋の乾燥を防いでまつ毛を守る' }
+      { icon: '🔥', name: 'ホットアイマスク', sub: '目元の冷えをほぐして血流を促す' },
+      { icon: '💧', name: '保湿タイプのまつ毛美容液', sub: '乾燥から守るために毎日使う' },
+      { icon: '🌫️', name: 'フェイスミスト・加湿グッズ', sub: '外側からも潤いを補給' }
     ],
-    line: '冬の"守り3点セット"をLINEで「冬」と送ってね❄️',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'polarbear'
   },
   penguin: {
@@ -1394,15 +1176,15 @@ const typeData = {
     nameShort: '片寝ペンギン',
     tag: '片目だけ取れるタイプ',
     color: '#1E3D6B', bg: '#F0F8FF',
-    message: '片目だけ取れるの、寝方が原因。\n体勢を変えたら整う。',
-    detail: '片目だけいつも取れる・乱れる・左右差がある。施術の差かな、まつ毛の量の違いかなって思ってない？ 違う可能性が高い。寝方のクセが原因なことがすごく多い。毎晩同じ方向に向いて寝てると、片側だけ圧力と摩擦がかかり続ける。「確かにいつも同じ向きで寝てるかも」ってなった？ 正解やと思う。体勢を変えるだけで整う。詳しくはLINEで話しよ👇',
-    priority: ['寝る向きと枕の高さを見直す', 'ホットアイマスクで触りたい衝動を置き換える', 'まつ毛のキワを左右均等に洗う'],
+    message: '寝るときのクセで、片側だけに摩擦がかかっている。\n左右差はそこから来ていることが多い。',
+    detail: 'まつ毛の状態が左右で違う、片方だけ気になるということはある？ 毎晩同じ向きに向いて寝ていると、片側だけ枕との摩擦を受け続ける。これが積み重なると、片側だけ状態が変わってくる。今のあなたのまつ毛は「寝方のクセが影響している」状態にある。',
+    priority: ['寝る向きと枕の高さを意識してみる', 'ホットアイマスクで触りたい衝動を置き換える', 'まつ毛のキワを左右均等に洗う'],
     care: [
-      { icon: '😴', name: 'ホットアイマスク', sub: '触りたい衝動をやさしく抑える' },
-      { icon: '🫧', name: 'アイシャンプー', sub: 'まつ毛のキワを左右均等に洗う' },
-      { icon: '🌙', name: 'アイクリーム', sub: '目周りの皮膚を保湿して刺激に強くする' }
+      { icon: '🛡️', name: 'コーティング系まつ毛美容液', sub: '摩擦から守るバリアをつくる' },
+      { icon: '🔥', name: 'ホットアイマスク', sub: 'リラックスしながら触らない習慣に' },
+      { icon: '✨', name: '補修タイプのまつ毛美容液', sub: '摩擦ダメージの回復をサポート' }
     ],
-    line: '枕・寝方チェック表をLINEで「左右」と返信してもらったら送るね🐧',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'penguin'
   },
   dolphin: {
@@ -1410,31 +1192,47 @@ const typeData = {
     nameShort: '透きとおりイルカ',
     tag: 'バランス最強タイプ',
     color: '#1A7090', bg: '#E8F8FF',
-    message: '今の習慣が正解。\nやりすぎないのがいちばん強い。',
-    detail: '今のまつ毛、実はいい状態にある。モチも安定してて、目元のコンディションも整ってる。でも「このまま維持できるか不安」って思ってない？ 崩れるのはいつも季節の変わり目と、ちょっとした生活の乱れ。今の習慣を守りながら、崩れポイントだけ先回りできたら完璧。その先回りのやり方、LINEで教えるね👇',
-    priority: ['今の習慣をそのままキープする', '崩れやすい季節だけ先回りケア', '疲れた日だけホットアイマスクを追加'],
+    message: '今のまつ毛の状態は比較的バランスが取れている。\nこれを維持するケアが大切。',
+    detail: '今のところ大きなトラブルは出ていないけど、だからこそ「なんとなく続ける」が一番効く時期。まつ毛の状態は季節の変わり目や生活の変化で意外とすぐ変わる。今の習慣を守りながら、崩れポイントだけ知っておくと、ずっと良い状態をキープできる。今のあなたのまつ毛は「底を作っているいい状態」にある。',
+    priority: ['今の生活習慣をそのままキープする', '季節の変わり目だけ保湿ケアを少し足す', '疲れた日だけホットアイマスクを追加する'],
     care: [
-      { icon: '🖌️', name: '軽めのまつ毛美容液', sub: '今の状態を維持するための毎日ケア' },
-      { icon: '🫧', name: 'アイシャンプー（週2〜3回）', sub: 'やりすぎず、定期的にリセット' },
-      { icon: '😴', name: 'ホットアイマスク（疲れた日だけ）', sub: '疲れた日の回復を早める' }
+      { icon: '💧', name: '保湿タイプのまつ毛美容液', sub: '毎日の予防ケアとして続ける' },
+      { icon: '🔥', name: 'ホットアイマスク', sub: '疲れを感じたときに取り入れる' },
+      { icon: '🫧', name: 'アイシャンプー', sub: '週1〜2回で清潔なキワをキープ' }
     ],
-    line: '今の習慣を"崩さないコツ"をLINEで「維持」と返信してね✨',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'dolphin'
+  },
+  snake: {
+    name: 'ぐるぐる腸内\nヘビ',
+    nameShort: 'ぐるぐる腸内ヘビ',
+    tag: '体内環境タイプ',
+    color: '#4A8830', bg: '#F0FAEC',
+    message: '外側の環境は悪くないのに、まつ毛が弱い。\n原因は体の内側にある。',
+    detail: '生活習慣を見ると乱れは少ない。スマホも部屋の乾燥もそんなに気にならない。なのにまつ毛が細い・弱い・伸びにくいと感じてない？ 実は原因が体の外ではなく内側にある。腸の調子・薬の影響・食事の偏り、これらが重なると体内の水分吸収が落ちる。水を飲んでいても、ちゃんと届いていない状態。今のあなたのまつ毛は「内側から水分が届きにくい」状態にある。',
+    priority: ['腸の調子を整えることを最優先にする', 'まつ毛美容液は補修タイプと保湿タイプを両方使う', '水分はこまめにゆっくり飲む（一気飲みNG）'],
+    care: [
+      { icon: '✨', name: '補修タイプのまつ毛美容液', sub: '弱ったまつ毛を内側からケアする' },
+      { icon: '💧', name: '保湿タイプのまつ毛美容液', sub: 'キワに水分をしっかり補給する' },
+      { icon: '🔥', name: 'ホットアイマスク', sub: '体を温めて血流・吸収を促す' }
+    ],
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
+    svgKey: 'snake'
   },
   camel: {
     name: '水ダメ\nラクダ',
     nameShort: '水ダメラクダ',
     tag: '水分ムラタイプ',
     color: '#806020', bg: '#FFF3E0',
-    message: '飲んでる量じゃなくて飲み方が問題。\nちょこちょこ飲むだけで変わる。',
-    detail: '目が乾く日とそうじゃない日のムラが大きい・体調によってまつ毛の持ちが変わる。「なんで安定しないんやろ」ってなってない？ 一気に水飲んで「今日は大丈夫」って思ってない？ 実はそれ、体に吸収されてないかも。水分は量より【ちょこちょこ】が大事。飲み方がムラのある日は、目の乾きもムラになる。「確かに一気飲み派かも」ってなった？ 飲み方を変えるだけで変わる。詳しくはLINEで👇',
-    priority: ['水分は量より回数・こまめに飲む', 'コーヒーなど飲んだあとは水もセットで', '保湿目薬で外からうるおいを補う'],
+    message: '水分を摂っているつもりでも、\n体への吸収が追いついていない状態。',
+    detail: '水は飲んでいるのに、目が乾く日とそうじゃない日のムラがある？ 一気に飲んだり、カフェインの多い飲み物が中心だと、体への水分吸収が安定しにくくなる。体の中の水分量が不安定だと、目元の乾きにもムラが出やすい。今のあなたのまつ毛は「体内の水分吸収にムラがある」状態にある。',
+    priority: ['水分はこまめに・少しずつ飲む習慣に', 'カフェイン系の飲み物のあとは水を追加する', 'まつ毛美容液は保湿タイプを毎日つける'],
     care: [
-      { icon: '💧', name: '保湿目薬', sub: '水分ムラで乾いた目を外からうるおす' },
-      { icon: '🖌️', name: 'ハケタイプ補修美容液', sub: '毎日続けてまつ毛を保護する' },
-      { icon: '😴', name: 'ホットアイマスク', sub: '目のコンディションを整えてリセット' }
+      { icon: '💧', name: '保湿タイプのまつ毛美容液', sub: '外側からの保湿で乾きムラを補う' },
+      { icon: '💊', name: '保湿目薬', sub: '目の乾きにこまめに対応する' },
+      { icon: '🌫️', name: 'フェイスミスト', sub: '日中の乾燥対策にシュッとひとふき' }
     ],
-    line: '1日"水分4回チェック"テンプレをLINEで「水分」と返信してもらったら送るね💧',
+    line: 'あなたの状態に合ったケア方法、もっと詳しく知りたい方は👇',
     svgKey: 'camel'
   }
 };
@@ -1449,8 +1247,8 @@ let userAnswers = []; // each answer index
 // ===== INIT START SCREEN ANIMALS =====
 (function initStartGrid() {
   const grid = document.getElementById('start-animal-grid');
-  const order = ['hedgehog','owl','fox','deer','otter','panda','beaver','capybara','koala','polarbear','penguin','dolphin'];
-  const colors = ['#FEF3E8','#F0EDF9','#FEF2E8','#F4FAE8','#E8F4FE','#F0F0F0','#FEF8E0','#FFE8E8','#EEF2F8','#E8F4FE','#F0F8FF','#E8F8FF'];
+  const order = ['hedgehog','owl','fox','deer','panda','beaver','capybara','koala','polarbear','penguin','dolphin','snake'];
+  const colors = ['#FEF3E8','#F0EDF9','#FEF2E8','#F4FAE8','#F0F0F0','#FEF8E0','#FFE8E8','#EEF2F8','#E8F4FE','#F0F8FF','#E8F8FF','#F0FAEC'];
   order.forEach((key, i) => {
     const div = document.createElement('div');
     div.className = 'animal-mini';
@@ -1536,6 +1334,13 @@ function selectAnswer(qIndex, optIndex) {
     });
   }
 
+  // 水を1.5L以上飲んでる人は腸・薬のスコアを相殺（吸収できてるから問題なし）
+  if (specificAnswers.water_enough) {
+    if (opt.flag && (opt.flag.gut || opt.flag.meds)) {
+      Object.entries(opt.scores).forEach(([k,v]) => { scores[k] = Math.max(0, (scores[k]||0) - v); });
+    }
+  }
+
   // Highlight selected
   document.querySelectorAll('.option-btn').forEach((b,i) => {
     b.classList.toggle('selected', i === optIndex);
@@ -1560,31 +1365,209 @@ function goBack() {
 }
 
 // ===== DIAGNOSE =====
-function diagnose() {
-  const { H, V, O, R, F } = scores;
-  const { pollen, cl } = flags;
-  const { q2, q4, q9, q10, q12, skin, temp } = specificAnswers;
+// ===== STEP① 内側タイプ決定（本体） =====
+function getInnerType() {
+  const { H, R } = scores;
+  const { gut, meds, temp, water_enough, q2 } = specificAnswers;
 
-  // 肌タイプで精度補正
-  const adjustedO = skin === 'oily' ? O + 1 : skin === 'dry' ? Math.max(0, O - 1) : O;
-  const adjustedH = skin === 'dry' ? H + 1 : H;
-  const adjustedF = skin === 'sensitive' ? F + 1 : F;
+  // 水の「量＋飲み方」両方揃ってるか
+  const goodHydration = water_enough && (q2 === 'C' || q2 === 'D');
 
-  if (pollen >= 2 && adjustedF >= 2) return 'deer';
-  if (cl >= 2) return 'fox';
-  if (adjustedF >= 5 && q10 === 'A') return 'panda';
-  if (adjustedF >= 5) return 'penguin';
-  if (R >= 6) return temp === 'cold' ? 'polarbear' : 'koala';
-  if (adjustedH >= 5 && V >= 6) return 'hedgehog';
-  if (V >= 7 && (q4 === 'A' || q4 === 'B')) return 'owl';
-  if (adjustedO >= 6 && q9 === 'A') return 'otter';
-  if (adjustedO >= 6) return 'beaver';
-  if (V >= 5 && q12 === 'A') return 'capybara';
-  if (adjustedH >= 6 && q2 === 'A') return 'camel';
-  return 'dolphin';
+  // 腸・薬ボーナス
+  let bonus = 0;
+  if (gut === 'bad')       bonus += goodHydration ? 1 : 3;
+  else if (gut === 'unstable') bonus += goodHydration ? 1 : 2;
+  if (meds)                bonus += goodHydration ? 1 : 2;
+
+  const absorption = H + bonus; // 吸収力の弱さ
+  const recovery   = R;
+  const circulation = R + (temp === 'cold' ? 1 : 0);
+
+  if (absorption >= 5) return 'snake';  // 🐍 吸収できてない
+  if (H >= 5)          return 'camel';  // 🐪 水分の入れ方が極端
+  if (recovery >= 5)   return 'koala';  // 🐨 回復不足
+  if (circulation >= 4) return 'polarbear'; // 🐻‍❄️ 冷えで巡りが悪い
+  return 'balanced';
 }
 
-// ===== SHOW RESULT =====
+// ===== STEP② 外側タイプ（崩れ方）=====
+function getOuterType() {
+  const { V, F, O } = scores;
+  const { pollen, cl } = flags;
+  const { q4, q9, q12, skin } = specificAnswers;
+  const adjustedF = skin === 'sensitive' ? F + 1 : F;
+  const adjustedO = skin === 'oily' ? O + 1 : skin === 'dry' ? Math.max(0, O - 1) : O;
+
+  if (pollen >= 2 && adjustedF >= 2) return 'deer';      // 🦌 花粉こすり
+  if (adjustedF >= 5 && q12 === 'A') return 'panda';     // 🐼 ゴシゴシ
+  if (adjustedF >= 5)               return 'penguin';    // 🐧 片寝
+  if (cl >= 2 && V >= 5)           return 'fox';        // 🦊 コンタクト乾燥
+  if (V >= 7 && (q4 === 'A' || q4 === 'B')) return 'owl'; // 🦉 スマホまばたき
+  if (V >= 5 && q12 === 'A')       return 'capybara';   // 🐾 むれ
+  if (adjustedO >= 6 && q9 === 'A') return 'otter';     // 🦦 皮脂残留
+  if (adjustedO >= 6)              return 'beaver';     // 🦫 コーティング過多
+  if (V >= 5)                      return 'hedgehog';   // 🦔 乾燥環境
+  return null;
+}
+
+// ===== STEP③ 最終タイプ生成 =====
+function diagnose() {
+  const inner = getInnerType();
+  const outer = getOuterType();
+
+  // 両方問題なし → イルカ
+  if (inner === 'balanced' && !outer) return 'dolphin';
+
+  // 🐍ヘビは最優先（内側原因が明確）
+  if (inner === 'snake') return 'snake';
+
+  // 外側に明確な原因がある → 外側タイプ
+  if (outer) return outer;
+
+  // 内側だけ問題ある → 内側タイプ
+  return inner;
+}
+
+// ===== サブタイプ（外側と内側の組み合わせ）=====
+function getSubType(mainKey) {
+  const inner = getInnerType();
+  const outer = getOuterType();
+  const { H, V, R } = scores;
+  const { skin } = specificAnswers;
+  const adjustedH = skin === 'dry' ? H + 1 : H;
+
+  // メインと違うほうをサブに
+  if (mainKey === outer && inner !== 'balanced') {
+    const subMap = {
+      snake: '🐍 ちょいヘビ', camel: '🐪 ちょいラクダ',
+      koala: '🐨 ちょいコアラ', polarbear: '🐻‍❄️ ちょいシロクマ'
+    };
+    return subMap[inner] || null;
+  }
+  if (['snake','camel','koala','polarbear'].includes(mainKey) && outer) {
+    const subMap = {
+      hedgehog: '🦔 ちょい乾燥', owl: '🦉 ちょい目疲れ',
+      fox: '🦊 ちょいコンタクト', panda: '🐼 ちょいこすり',
+      otter: '🦦 ちょい皮脂', beaver: '🦫 ちょいコーティング',
+      deer: '🦌 ちょい花粉', capybara: '🐾 ちょいむれ', penguin: '🐧 ちょい片寝'
+    };
+    return subMap[outer] || null;
+  }
+  // フォールバック
+  if (V >= 5 && mainKey !== 'owl' && mainKey !== 'hedgehog') return '🦉 ちょい目疲れ';
+  if (adjustedH >= 4 && mainKey !== 'hedgehog' && mainKey !== 'camel') return '🦔 ちょい乾燥';
+  if (R >= 4 && mainKey !== 'koala' && mainKey !== 'polarbear') return '🐨 ちょい回復不足';
+  return null;
+}
+
+
+// ===== QUIZ LOGIC =====
+function startQuiz() {
+  document.getElementById('start-screen').classList.add('hidden');
+  document.getElementById('quiz-screen').classList.remove('hidden');
+  currentQ = 0;
+  scores = { H:0, V:0, O:0, R:0, F:0 };
+  flags = { pollen:0, cl:0 };
+  specificAnswers = {};
+  userAnswers = new Array(questions.length).fill(null);
+  showQuestion(0);
+}
+
+function showQuestion(n) {
+  const q = questions[n];
+  document.getElementById('progress-count').textContent = (n+1) + ' / ' + questions.length;
+  document.getElementById('progress-fill').style.width = ((n+1)/questions.length*100) + '%';
+  document.getElementById('btn-back').style.visibility = n === 0 ? 'hidden' : 'visible';
+
+  // hintがあれば表示
+  const hint = q.hint ? `<div style="font-size:12px;color:var(--rose);margin-bottom:14px;letter-spacing:0.5px">💡 ${q.hint}</div>` : '';
+  document.getElementById('question-card').innerHTML = `
+    <span style="font-size:32px;margin-bottom:14px;display:block">${q.emoji}</span>
+    ${hint}
+    <div class="q-text">${q.text}</div>
+    <div class="options-list" id="options-list"></div>
+  `;
+
+  // innerHTML書き換え後に再取得
+  const list = document.getElementById('options-list');
+  const letters = ['A','B','C','D'];
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn' + (userAnswers[n] === i ? ' selected' : '');
+    btn.innerHTML = `<span class="option-letter">${letters[i]}</span>${opt.text}`;
+    btn.onclick = () => selectAnswer(n, i);
+    list.appendChild(btn);
+  });
+
+  // Re-animate
+  const card = document.getElementById('question-card');
+  card.style.animation = 'none';
+  card.offsetHeight;
+  card.style.animation = 'slideUp 0.35s ease';
+}
+
+function selectAnswer(qIndex, optIndex) {
+  // Remove previous score for this question if re-answering
+  if (userAnswers[qIndex] !== null) {
+    const prevOpt = questions[qIndex].options[userAnswers[qIndex]];
+    if (prevOpt.scores) {
+      Object.entries(prevOpt.scores).forEach(([k,v]) => { scores[k] = Math.max(0, (scores[k]||0) - v); });
+    }
+    if (prevOpt.flag) {
+      Object.entries(prevOpt.flag).forEach(([k,v]) => {
+        if (k === 'pollen' || k === 'cl') flags[k] = Math.max(0, flags[k] - v);
+        else delete specificAnswers[k];
+      });
+    }
+  }
+
+  userAnswers[qIndex] = optIndex;
+  const opt = questions[qIndex].options[optIndex];
+
+  // Add scores
+  if (opt.scores) {
+    Object.entries(opt.scores).forEach(([k,v]) => { scores[k] = (scores[k]||0) + v; });
+  }
+  // Apply flags
+  if (opt.flag) {
+    Object.entries(opt.flag).forEach(([k,v]) => {
+      if (k === 'pollen' || k === 'cl') flags[k] = (flags[k]||0) + v;
+      else specificAnswers[k] = v;
+    });
+  }
+
+  // 水を1.5L以上飲んでる人は腸・薬のスコアを相殺（吸収できてるから問題なし）
+  if (specificAnswers.water_enough) {
+    if (opt.flag && (opt.flag.gut || opt.flag.meds)) {
+      Object.entries(opt.scores).forEach(([k,v]) => { scores[k] = Math.max(0, (scores[k]||0) - v); });
+    }
+  }
+
+  // Highlight selected
+  document.querySelectorAll('.option-btn').forEach((b,i) => {
+    b.classList.toggle('selected', i === optIndex);
+  });
+
+  // Auto-advance
+  setTimeout(() => {
+    if (qIndex < questions.length - 1) {
+      currentQ = qIndex + 1;
+      showQuestion(currentQ);
+    } else {
+      showResult();
+    }
+  }, 350);
+}
+
+function goBack() {
+  if (currentQ > 0) {
+    currentQ--;
+    showQuestion(currentQ);
+  }
+}
+
+// ===== DIAGNOSE =====
+
 const skinLabels = {
   dry:       { label: '乾燥肌', icon: '🌵', color: '#C47A40', bg: '#FEF3E8', advice: 'キワの保湿を念入りに。美容液は毎日続けて◎' },
   combo:     { label: '混合肌', icon: '🌿', color: '#5A8030', bg: '#F4FAE8', advice: 'Tゾーンの皮脂が目元まで来やすい。キワ洗浄を丁寧に' },
@@ -1595,27 +1578,143 @@ const skinLabels = {
 const tempAdvice = {
   hot: {
     icon: '☕',
-    title: '温かい飲み物が多い人のまつ毛特徴',
+    title: '温かい飲み物をよく飲む人のまつ毛の特徴',
     points: [
-      '✅ 体温が安定しやすくモチは出やすい傾向◎',
-      '⚠️ まつ毛がしなやか系になりやすく外部ダメージを受けやすい',
-      '🔥 乾燥・摩擦・熱（暖房など）の影響を受けやすい状態',
-      '💡 コーティングがほぼ必須！モチのいい素材を守ってあげて'
+      '体温が安定しやすく、血流が回りやすい',
+      'まつ毛は柔らかく・しなやか系になりやすい',
+      '乾燥・摩擦・熱などの外部ダメージを受けやすい状態',
+      '見た目はいいのに崩れやすい、というタイプに多い'
     ],
     color: '#A05820', bg: '#FEF3E0'
   },
   cold: {
     icon: '🧊',
-    title: '冷たい飲み物が多い人のまつ毛特徴',
+    title: '冷たい飲み物をよく飲む人のまつ毛の特徴',
     points: [
-      '⚠️ 体が冷えやすく目周りの血流が滞りがち',
-      '⚠️ まつ毛のコシ・ハリが出にくい傾向',
-      '💡 温めケア（ホットアイマスク）が特に効く',
-      '💡 常温か温かい飲み物を意識するだけで変わってくる'
+      '体が冷えやすく、目元への血流が滞りがち',
+      'まつ毛のコシやハリが出にくい傾向がある',
+      '体内での水分吸収効率が下がりやすい',
+      '冬や気温が低いときに特に影響が出やすい'
     ],
     color: '#1A5080', bg: '#E8F4FF'
   }
 };
+
+function diagnose() {
+  const { H, V, O, R, F } = scores;
+  const { pollen, cl } = flags;
+  const { q2, q4, q9, q10, q12, skin, temp, gut, meds, water_enough } = specificAnswers;
+
+  // ===== 肌タイプ補正 =====
+  const adjustedO = skin === 'oily' ? O + 1 : skin === 'dry' ? Math.max(0, O - 1) : O;
+  const adjustedH = skin === 'dry' ? H + 1 : H;
+  const adjustedF = skin === 'sensitive' ? F + 1 : F;
+
+  // ===== 水分の「量＋飲み方」で吸収力を判定 =====
+  // 1.5L以上 ＋ こまめ飲み（水を意識してる） のとき だけ軽減
+  const goodHydration = water_enough && (q2 === 'C' || q2 === 'D');
+
+  // ===== 2軸スコア計算 =====
+  // 外側スコア（環境・習慣）
+  const outerScore = V + adjustedF + adjustedO;
+
+  // 内側スコア（体内・吸収）
+  let innerBonus = 0;
+  if (gut === 'bad') innerBonus += goodHydration ? 1 : 3;
+  else if (gut === 'unstable') innerBonus += goodHydration ? 1 : 2;
+  if (meds) innerBonus += goodHydration ? 1 : 2;
+  const innerScore = adjustedH + R + innerBonus;
+
+  // ===== 🐍ヘビ判定：外はOKなのに内側で崩れてるパターン =====
+  // ヘビ = 「吸収できていない」タイプ（腸・薬・食偏り）
+  const isInnerDominant = innerScore >= 7 && outerScore < 8;
+  if (isInnerDominant) return 'snake';
+
+  // ===== 外側ファースト判定 =====
+  if (pollen >= 2 && adjustedF >= 2) return 'deer';
+  if (adjustedF >= 5 && q12 === 'A') return 'panda';
+  if (adjustedF >= 5) return 'penguin';
+  if (cl >= 2 && V >= 5) return 'fox';
+  if (V >= 7 && (q4 === 'A' || q4 === 'B')) return 'owl';
+  if (V >= 5 && q12 === 'A') return 'capybara';
+
+  // ===== 内側判定 =====
+  if (adjustedH >= 5 && V >= 6) return 'hedgehog';
+
+  // 🐪ラクダ = 「入れ方が極端」タイプ（一気飲み・カフェイン多め・飲む量のムラ）
+  // ヘビ（吸収できない）と明確に区別
+  if (adjustedH >= 5 && q2 === 'A') return 'camel'; // カフェイン多め
+  if (adjustedH >= 6 && !goodHydration) return 'camel'; // 量も質も足りてない＝飲み方問題
+
+  if (R >= 5 && temp === 'cold') return 'polarbear';
+  if (R >= 5) return 'koala';
+  if (adjustedO >= 6 && q9 === 'A') return 'otter';
+  if (adjustedO >= 6) return 'beaver';
+
+  // 混合（外・内どちらも中程度）
+  if (innerScore >= 5 && outerScore >= 5) {
+    if (adjustedH >= V && adjustedH >= adjustedF) return 'hedgehog';
+    if (V >= adjustedH) return 'owl';
+    return 'capybara';
+  }
+
+  // インナー寄り（閾値を少し下げた再チェック）→ ヘビ
+  if (innerScore >= 5 && outerScore < 6) return 'snake';
+
+  // 🐬イルカ：本当のバランス型
+  if (adjustedH <= 3 && V <= 4 && adjustedO <= 4 && adjustedF <= 3 && innerScore < 5) return 'dolphin';
+
+  // フォールバック
+  if (V >= 5) return 'owl';
+  if (adjustedH >= 4) return 'hedgehog';
+  if (adjustedO >= 4) return 'otter';
+  return 'dolphin';
+}
+
+// ===== サブタイプ計算 =====
+function getSubType(mainKey) {
+  const { H, V, O, R, F } = scores;
+  const { pollen, cl } = flags;
+  const { skin, gut, meds, water_enough, q2 } = specificAnswers;
+
+  const adjustedO = skin === 'oily' ? O + 1 : skin === 'dry' ? Math.max(0, O - 1) : O;
+  const adjustedH = skin === 'dry' ? H + 1 : H;
+  const adjustedF = skin === 'sensitive' ? F + 1 : F;
+  const goodHydration = water_enough && (q2 === 'C' || q2 === 'D');
+  let innerBonus = 0;
+  if (gut === 'bad') innerBonus += goodHydration ? 1 : 3;
+  else if (gut === 'unstable') innerBonus += goodHydration ? 1 : 2;
+  if (meds) innerBonus += goodHydration ? 1 : 2;
+  const innerScore = adjustedH + R + innerBonus;
+
+  // メインタイプ別にサブタイプを決定
+  const subs = {
+    snake:     [ [V >= 5, '🦉 ちょいフクロウ'],   [adjustedH >= 4, '🦔 ちょいハリネズミ'], [R >= 3, '🐨 ちょいコアラ'] ],
+    hedgehog:  [ [V >= 5, '🦉 ちょいフクロウ'],   [R >= 4, '🐨 ちょいコアラ'],           [adjustedH >= 6, '🐪 ちょいラクダ'] ],
+    owl:       [ [adjustedF >= 3, '🐼 ちょいパンダ'], [adjustedH >= 4, '🦔 ちょいハリネズミ'], [cl >= 1, '🦊 ちょいキツネ'] ],
+    fox:       [ [adjustedF >= 3, '🐼 ちょいパンダ'], [V >= 5, '🦉 ちょいフクロウ'],       [pollen >= 1, '🦌 ちょいシカ'] ],
+    deer:      [ [cl >= 1, '🦊 ちょいキツネ'],    [adjustedF >= 4, '🐼 ちょいパンダ'],     [V >= 4, '🦉 ちょいフクロウ'] ],
+    panda:     [ [adjustedO >= 4, '🦦 ちょいラッコ'], [V >= 4, '🦉 ちょいフクロウ'],      [pollen >= 1, '🦌 ちょいシカ'] ],
+    penguin:   [ [adjustedF >= 4, '🐼 ちょいパンダ'], [R >= 4, '🐨 ちょいコアラ'],         [V >= 4, '🦉 ちょいフクロウ'] ],
+    otter:     [ [adjustedO >= 5, '🦫 ちょいビーバー'], [adjustedH >= 4, '🦔 ちょいハリネズミ'], [V >= 4, '🦉 ちょいフクロウ'] ],
+    beaver:    [ [adjustedO >= 6, '🦦 ちょいラッコ'], [adjustedF >= 3, '🐼 ちょいパンダ'],  [V >= 4, '🦉 ちょいフクロウ'] ],
+    capybara:  [ [adjustedO >= 4, '🦦 ちょいラッコ'], [V >= 6, '🦉 ちょいフクロウ'],       [adjustedH >= 4, '🦔 ちょいハリネズミ'] ],
+    koala:     [ [R >= 5 && V >= 4, '🦉 ちょいフクロウ'], [adjustedH >= 4, '🦔 ちょいハリネズミ'], [innerScore >= 4, '🐍 ちょいヘビ'] ],
+    polarbear: [ [adjustedH >= 4, '🦔 ちょいハリネズミ'], [R >= 5, '🐨 ちょいコアラ'],     [innerScore >= 4, '🐍 ちょいヘビ'] ],
+    camel:     [ [adjustedH >= 5, '🦔 ちょいハリネズミ'], [innerScore >= 4, '🐍 ちょいヘビ'], [R >= 4, '🐨 ちょいコアラ'] ],
+    dolphin:   [ [false, ''], [false, ''], [false, ''] ],
+  };
+
+  const candidates = subs[mainKey] || [];
+  for (const [cond, label] of candidates) {
+    if (cond) return label;
+  }
+  return null;
+}
+
+
+// ===== SHOW RESULT =====
+
 
 function showResult() {
   document.getElementById('quiz-screen').classList.add('hidden');
@@ -1624,6 +1723,7 @@ function showResult() {
 
   const typeKey = diagnose();
   const type = typeData[typeKey];
+  const subType = getSubType(typeKey);
   const skin = skinLabels[specificAnswers.skin] || null;
 
   // Set CSS vars for result card
@@ -1637,16 +1737,27 @@ function showResult() {
   document.getElementById('result-name').textContent = type.name.replace(/\n/g, '\n');
   document.getElementById('result-msg').textContent = type.message;
 
-  // 肌タイプバッジ
+  // 肌タイプバッジ＋サブタイプバッジ
   const skinBadgeWrap = document.getElementById('skin-badge-wrap');
+  let badgeHTML = '';
+  if (subType) {
+    badgeHTML += `
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.7);border:1.5px solid rgba(255,255,255,0.9);border-radius:50px;padding:5px 14px;margin-bottom:6px;">
+        <span style="font-size:12px;font-weight:700;color:var(--navy)">＋ ${subType}</span>
+      </div>
+    `;
+  }
   if (skin) {
-    skinBadgeWrap.innerHTML = `
+    badgeHTML += `
       <div style="display:inline-flex;align-items:center;gap:6px;background:${skin.bg};border-radius:50px;padding:5px 14px;margin-bottom:2px;">
         <span style="font-size:14px">${skin.icon}</span>
         <span style="font-size:12px;font-weight:700;color:${skin.color}">肌タイプ：${skin.label}</span>
       </div>
       <p style="font-size:12px;color:var(--text-muted);margin-top:6px;line-height:1.6">👉 ${skin.advice}</p>
     `;
+  }
+  if (badgeHTML) {
+    skinBadgeWrap.innerHTML = badgeHTML;
     skinBadgeWrap.style.display = 'block';
   } else {
     skinBadgeWrap.style.display = 'none';
@@ -1673,6 +1784,12 @@ function showResult() {
 
   document.getElementById('detail-text').textContent = type.detail;
 
+  // コンタクト使ってない人がフクロウになった場合、コンタクト言及を外す
+  if (typeKey === 'owl' && flags.cl === 0) {
+    document.getElementById('detail-text').textContent =
+      type.detail.replace('「コンタクトのせいかな」', '').replace('「目の使いすぎかな」「睡眠不足かな」', '「目の疲れや乾燥のせいかな」');
+  }
+
   const pList = document.getElementById('priority-list');
   pList.innerHTML = '';
   type.priority.forEach((p, i) => {
@@ -1682,9 +1799,25 @@ function showResult() {
     pList.appendChild(li);
   });
 
-  document.getElementById('cta-text').textContent = type.line;
+  // ② 結論カード（一番上にドン）
+  const todayWrap = document.getElementById('today-action-wrap');
+  todayWrap.innerHTML = `
+    <div style="background:linear-gradient(135deg,#1E3D6B,#2B5FA8);border-radius:20px;padding:22px 24px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.65);margin-bottom:8px">TODAY'S ACTION</div>
+      <div style="font-family:'Zen Maru Gothic',sans-serif;font-size:15px;font-weight:700;color:white;margin-bottom:14px">今日からやってほしいこと</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        ${type.priority.map(p => `
+          <div style="display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.12);border-radius:10px;padding:10px 14px;">
+            <span style="font-size:14px;flex-shrink:0">✅</span>
+            <span style="font-size:13px;color:white;font-weight:700;line-height:1.5">${p}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
   const careList = document.getElementById('care-list');
   careList.innerHTML = '';
+  careList.style.cssText = 'display:none;flex-direction:column;gap:8px;margin-top:12px;';
   (type.care || []).forEach(c => {
     const div = document.createElement('div');
     div.style.cssText = 'display:flex;align-items:flex-start;gap:10px;background:var(--cream);border-radius:10px;padding:10px 12px;';
@@ -1692,7 +1825,90 @@ function showResult() {
     careList.appendChild(div);
   });
 
+  // 来店前チェック（Q2回答別出し分け）
+  const preVisitData = {
+    A: { // コーヒー・お茶・ジュース多め
+      drink: '☕ コーヒー・お茶・ジュース系が多いあなたへ',
+      warning: 'カフェインや糖分で【水分が抜けやすい・留まりにくい】状態になっています。目の乾き・充血・モチ低下の原因になることも。',
+      action: '来店1〜2時間前に【水をコップ1〜2杯】プラスしてください💧',
+      color: '#8B5A2A', bg: '#FEF3E0'
+    },
+    B: { // 半分は水
+      drink: '🫖 温かい飲み物が多いあなたへ',
+      warning: '巡りは良いけど【水分が逃げやすい】状態。まつ毛が柔らかくなりやすく、外部ダメージを受けやすくなります。',
+      action: '来店前は【水＋コーティング意識】が大事。施術後のコーティングも必須レベルです。',
+      color: '#A05020', bg: '#FEF0E4'
+    },
+    C: { // ほとんど水
+      drink: '🧊 冷たい飲み物が多いあなたへ',
+      warning: '体が冷えて【吸収効率が下がる】状態。まつ毛が硬くなりやすく密着しにくくなることも。',
+      action: '来店前は【常温〜ぬるめの水】を少し意識してみてください🌡️',
+      color: '#1A5080', bg: '#E8F4FF'
+    },
+    D: { // 意識して水
+      drink: '💧 水を意識して飲んでいるあなたへ',
+      warning: '水分管理はバッチリ◎ ただし【飲みすぎ・一気飲み】は体に吸収されにくいので注意。',
+      action: '来店前も【こまめに少しずつ】を続けるだけでOK👍',
+      color: '#1A7090', bg: '#E8F8FF'
+    }
+  };
+
+  const ngItems = [
+    '🚫 お風呂上がりすぐ',
+    '🚫 ドライヤー直後',
+    '🚫 カフェイン直前',
+    '🚫 強風（自転車など）'
+  ];
+
+  const routineItems = [
+    '来店1〜2時間前に【水をコップ2杯】',
+    '目元が乾く人は【ミスト or 目薬】で保湿',
+    'できれば【お風呂・洗顔は2〜3時間前まで】に済ませて'
+  ];
+
+  const q2key = specificAnswers.q2 === 'A' ? 'A' : specificAnswers.q2 === 'B' ? 'B' : specificAnswers.q2 === 'C' ? 'C' : 'D';
+  const pd = preVisitData[q2key] || preVisitData['D'];
+  const preVisitWrap = document.getElementById('pre-visit-wrap');
+  preVisitWrap.innerHTML = `
+    <div style="background:#ffffff;border-radius:20px;padding:22px 22px;border:1.5px solid #F4DADC;box-shadow:0 2px 12px rgba(30,61,107,0.08);">
+
+      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:#D4848E;margin-bottom:10px">PRE-VISIT CARE</div>
+      <div style="font-family:'Zen Maru Gothic',sans-serif;font-size:15px;font-weight:700;color:#1E3D6B;margin-bottom:14px">来店前チェック 💧</div>
+
+      <!-- 飲み物別ひとこと -->
+      <div style="background:${pd.bg};border-radius:12px;padding:12px 16px;margin-bottom:14px;">
+        <div style="font-size:12px;font-weight:700;color:${pd.color};margin-bottom:4px">${pd.drink}</div>
+        <div style="font-size:13px;font-weight:700;color:${pd.color}">👉 ${pd.action}</div>
+      </div>
+
+      <!-- NG（圧縮・タイトルのみ） -->
+      <div style="margin-bottom:14px;">
+        <div style="font-size:12px;font-weight:700;color:#1E3D6B;margin-bottom:8px">来店前のNG</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          ${ngItems.map(n=>`<div style="background:#FDF7F4;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;color:#2A2A2A">${n}</div>`).join('')}
+        </div>
+      </div>
+
+      <!-- ルーティン -->
+      <div style="background:linear-gradient(135deg,#1E3D6B,#2B5FA8);border-radius:12px;padding:14px 16px;">
+        <div style="font-size:12px;font-weight:700;color:white;margin-bottom:8px">来店前ルーティン ✅</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          ${routineItems.map(r=>`<div style="font-size:12px;color:rgba(255,255,255,0.9);line-height:1.5">▸ ${r}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+    preVisitWrap.style.display = 'block';
   window._currentType = type;
+}
+
+function toggleCare() {
+  const list = document.getElementById('care-list');
+  const btn = document.getElementById('care-toggle');
+  const isOpen = list.style.display === 'flex';
+  list.style.display = isOpen ? 'none' : 'flex';
+  list.style.flexDirection = 'column';
+  btn.textContent = isOpen ? '💡 おすすめケアアイテムを見る ›' : '💡 おすすめケアアイテムを閉じる ∧';
 }
 
 function shareX() {
